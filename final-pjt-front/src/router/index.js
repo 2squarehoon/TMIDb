@@ -8,7 +8,6 @@ import ArticleNewView from '@/views/ArticleNewView'
 import ArticleEditView from '@/views/ArticleEditView'
 
 // import MovieHomeView from '@/views/MovieHomeView'
-// import MovieEditView from '@/views/MovieEditView'
 // import MovieRecommendView from '@/views/MovieRecommendView'
 
 import LoginView from '@/views/LoginView.vue'
@@ -69,11 +68,6 @@ const routes = [
   //   component: MovieHomeView,
   // },
   // {
-  //   path: '/movies/:moviePk/edit',
-  //   name: 'movieEdit',
-  //   component: MovieEditView,
-  // },
-  // {
   //   path: '/movies/recommend',
   //   name: 'movieRecommend',
   //   component: MovieRecommendView,
@@ -87,8 +81,6 @@ const routes = [
     path: '*',
     redirect: '/404'
   },
-  // Movies
-  
 ]
 
 const router = new VueRouter({
