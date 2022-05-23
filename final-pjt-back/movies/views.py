@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 
-from .models import Movie
+from .models import Movie, Review
 from .serializers.review import ReviewSerializer
 from .serializers.movie import MovieSerializer
 
@@ -31,3 +31,29 @@ def review_create(request, movie_pk):
         reviews = movie.reviews.all()
         serializer = ReviewSerializer(reviews, many=True)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+@api_view(['PUT', 'DELETE'])
+def review_update_or_delete(request, movie_pk, review_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    review = get_object_or_404(Review, pk=review_pk)
+
+    def update_review():
+        if request.user == review.user:
+            serializer = ReviewSerializer(instance=review, data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                reviews = movie.reviews.all()
+                serializer = ReviewSerializer(reviews, many=True)
+                return Response(serializer.data)
+
+    def delete_review():
+        if request.user == review.user:
+            review.delete()
+            reviews = movie.reviews.all()
+            serializer = ReviewSerializer(reviews, many=True)
+            return Response(serializer.data)
+    
+    if request.method == 'PUT':
+        return update_review()
+    elif request.method == 'DELETE':
+        return delete_review()
