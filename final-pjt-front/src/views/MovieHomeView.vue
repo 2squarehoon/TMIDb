@@ -4,9 +4,9 @@
     <h1>Home</h1>
     <ul>
       <li v-for="movie in movies" :key="movie.pk">
-        <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }">
+        <!-- <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }"> -->
           {{ movie.fields.title }}
-        </router-link>
+        <!-- </router-link> -->
       </li>
     </ul>
   </div>
