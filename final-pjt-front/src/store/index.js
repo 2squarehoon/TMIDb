@@ -3,10 +3,10 @@ import Vuex from 'vuex'
 
 import accounts from "./modules/accounts"
 import articles from "./modules/articles"
-// import movies from "./modules/movies"
+import movies from "./modules/movies"
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  modules: { accounts, articles }
+  modules: { accounts, articles, movies }
 })

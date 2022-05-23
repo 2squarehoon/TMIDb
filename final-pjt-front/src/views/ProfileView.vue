@@ -19,6 +19,14 @@
         </router-link>
       </li>
     </ul>
+    <h2>좋아요 누른 영화</h2>
+    <ul>
+      <li v-for="movie in profile.like_movies" :key="movie.pk">
+        <router-link :to="{ name: 'movie', params: { moviePk: movie.pk } }">
+          {{ movie.title }}
+        </router-link>
+      </li>
+    </ul>
   </div>
 </template>
 
