@@ -16,10 +16,10 @@ export default {
       url: `${END_POINT}/${id}/`,
     })
   },
-  like(id) {
-    return api({
-      method: "post",
-      url: `${END_POINT}/${id}/like/`,
-    })
-  },
+  // like(id) {
+  //   return api({
+  //     method: "post",
+  //     url: `${END_POINT}/${id}/like/`,
+  //   })
+  // },
 }
