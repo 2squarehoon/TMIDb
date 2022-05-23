@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 class Movie(models.Model):
@@ -19,3 +20,9 @@ class Movie(models.Model):
     watcha_count = models.CharField(max_length=10)
     poster_url = models.CharField(max_length=200)
     overview = models.TextField()
+
+class Review(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reviews')
+    score = models.IntegerField()
+    content = models.TextField()
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='reviews')
