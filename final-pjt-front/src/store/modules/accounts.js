@@ -37,7 +37,7 @@ export default {
           // currentUser setting
           dispatch("getCurrentUser")
           // page 이동
-          router.push({ name: "articles" })
+          router.push({ name: "home" })
         })
         .catch((err) => {
           // console.error(err.response.data)
@@ -53,7 +53,7 @@ export default {
           commit("SET_TOKEN", token)
           localStorage.setItem("token", token)
           dispatch("fetchCurrentUser")
-          router.push({ name: "articles" })
+          router.push({ name: "home" })
         })
         .catch((err) => {
           // console.log(err.response.data)

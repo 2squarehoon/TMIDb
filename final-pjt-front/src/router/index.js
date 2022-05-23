@@ -7,8 +7,9 @@ import ArticleDetailView from '@/views/ArticleDetailView.vue'
 import ArticleNewView from '@/views/ArticleNewView'
 import ArticleEditView from '@/views/ArticleEditView'
 
-// import MovieHomeView from '@/views/MovieHomeView'
-// import MovieRecommendView from '@/views/MovieRecommendView'
+import MovieHomeView from '@/views/MovieHomeView'
+import MovieRecommendView from '@/views/MovieRecommendView'
+import MovieDetailView from '@/views/MovieDetailView'
 
 import LoginView from '@/views/LoginView.vue'
 import LogoutView from '@/views/LogoutView.vue'
@@ -62,16 +63,21 @@ const routes = [
     component: ArticleEditView,
   },
   // Movies
-  // {
-  //   path: '/movies',
-  //   name: 'movies',
-  //   component: MovieHomeView,
-  // },
-  // {
-  //   path: '/movies/recommend',
-  //   name: 'movieRecommend',
-  //   component: MovieRecommendView,
-  // },
+  {
+    path: '/movies',
+    name: 'home',
+    component: MovieHomeView,
+  },
+  {
+    path: '/movies/recommend',
+    name: 'recommend',
+    component: MovieRecommendView,
+  },
+  {
+    path: '/movies/:moviePk',
+    name: 'movie',
+    component: MovieDetailView,
+  },
   {
     path: '/404',
     name: 'NotFound404',
@@ -111,7 +117,7 @@ router.beforeEach((to, from, next) => {
   }
 
   if (!isAuthRequired && isLoggedIn) {
-    next({ name: 'articles'})
+    next({ name: 'home'})
   }
 })
 

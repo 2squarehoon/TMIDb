@@ -1,7 +1,7 @@
 <template>
-  <li class="comment-list-item">
-    <router-link :to="{ name: 'profile', params: { username: comment.user.username } }">
-      {{ comment.user.username }}
+  <li class="review-list-item">
+    <router-link :to="{ name: 'profile', params: { username: review.user.username } }">
+      {{ review.user.username }}
     </router-link>: 
     
     <span v-if="!isEditing">{{ payload.content }}</span>
@@ -10,11 +10,12 @@
       <input type="text" v-model="payload.content">
       <button @click="onUpdate">Update</button> |
       <button @click="switchIsEditing">Cancel</button>
+      <!-- 평점 추가 필요 -->
     </span>
 
-    <span v-if="currentUser.username === comment.user.username && !isEditing">
+    <span v-if="currentUser.username === review.user.username && !isEditing">
       <button @click="switchIsEditing">Edit</button> |
-      <button @click="deleteComment(payload)">Delete</button>
+      <button @click="deleteReview(payload)">Delete</button>
     </span>
   </li>
 </template>
@@ -23,15 +24,16 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'CommentListItem',
-  props: { comment: Object },
+  name: 'ReviewListItem',
+  props: { review: Object },
   data() {
     return {
       isEditing: false,
       payload: {
-        articlePk: this.comment.article,
-        commentPk: this.comment.pk,
-        content: this.comment.content
+        moviePk: this.review.movie,
+        reviewPk: this.review.pk,
+        score: this.review.score,
+        content: this.review.content
       },
     }
   },
@@ -39,22 +41,18 @@ export default {
     ...mapGetters(['currentUser']),
   },
   methods: {
-    ...mapActions(['updateComment', 'deleteComment']),
+    ...mapActions(['updateReview', 'deleteReview']),
     switchIsEditing() {
       this.isEditing = !this.isEditing
     },
     onUpdate() {
-      this.updateComment(this.payload)
+      this.updateReview(this.payload)
       this.isEditing = false
     }
   },
-
 }
 </script>
 
 <style>
-.comment-list-item {
-  border: 1px solid green;
 
-}
 </style>

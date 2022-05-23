@@ -1,10 +1,15 @@
 <template>
   <nav>
     <ul>
-      <li>
-        <router-link :to="{ name: 'articles' }">Home</router-link>
-      </li>
-      
+        <li>
+          <router-link :to="{ name: 'home' }">Home</router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'recommend' }">MovieRecommend</router-link>
+        </li>
+        <li>
+        <router-link :to="{ name: 'articles' }">Articles</router-link>
+        </li>
       <li v-if="!isLoggedIn">
         <router-link :to="{ name: 'login' }">Login</router-link>
       </li>
