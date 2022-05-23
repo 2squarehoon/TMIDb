@@ -94,7 +94,7 @@ const router = new VueRouter({
   routes
 })
 
-// Navigation Guard
+// Navigation Guard.
 router.beforeEach((to, from, next) => {
   // 이전 페이지에서 발생한 에러메시지 삭제
   store.commit('SET_AUTH_ERROR', null)
