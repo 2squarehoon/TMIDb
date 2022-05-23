@@ -7,9 +7,9 @@ import ArticleDetailView from '@/views/ArticleDetailView.vue'
 import ArticleNewView from '@/views/ArticleNewView'
 import ArticleEditView from '@/views/ArticleEditView'
 
-import MovieHomeView from '@/views/MovieHomeView'
-import MovieEditView from '@/views/MovieEditView'
-import MovieRecommendView from '@/views/MovieRecommendView'
+// import MovieHomeView from '@/views/MovieHomeView'
+// import MovieEditView from '@/views/MovieEditView'
+// import MovieRecommendView from '@/views/MovieRecommendView'
 
 import LoginView from '@/views/LoginView.vue'
 import LogoutView from '@/views/LogoutView.vue'
@@ -62,21 +62,22 @@ const routes = [
     name: 'articleEdit',
     component: ArticleEditView,
   },
-  {
-    path: '/movies',
-    name: 'movies',
-    component: MovieHomeView,
-  },
-  {
-    path: '/movies/:moviePk/edit',
-    name: 'movieEdit',
-    component: MovieEditView,
-  },
-  {
-    path: '/movies/recommend',
-    name: 'movieRecommend',
-    component: MovieRecommendView,
-  },
+  // Movies
+  // {
+  //   path: '/movies',
+  //   name: 'movies',
+  //   component: MovieHomeView,
+  // },
+  // {
+  //   path: '/movies/:moviePk/edit',
+  //   name: 'movieEdit',
+  //   component: MovieEditView,
+  // },
+  // {
+  //   path: '/movies/recommend',
+  //   name: 'movieRecommend',
+  //   component: MovieRecommendView,
+  // },
   {
     path: '/404',
     name: 'NotFound404',
@@ -85,7 +86,9 @@ const routes = [
   {
     path: '*',
     redirect: '/404'
-  }
+  },
+  // Movies
+  
 ]
 
 const router = new VueRouter({
@@ -94,7 +97,7 @@ const router = new VueRouter({
   routes
 })
 
-// Navigation Guard.
+// Navigation Guard
 router.beforeEach((to, from, next) => {
   // 이전 페이지에서 발생한 에러메시지 삭제
   store.commit('SET_AUTH_ERROR', null)
