@@ -14,8 +14,11 @@ def profile(request, username):
     serializer = ProfileSerializer(user)
     return Response(serializer.data)
 
-@api_view(['GET'])
-def profile_update(request, username):
+@api_view(['PUT'])
+def update_profile(request, username):
     user = get_object_or_404(User, username=username)
-    print(user)
-    return Response()
+    if user == request.user:
+        serializer = ProfileSerializer(instance=user, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
