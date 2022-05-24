@@ -11,7 +11,7 @@ import ArticleForm from '@/components/ArticleForm.vue'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'AritcleEditView',
+  name: 'ArticleEditView',
   components: { ArticleForm },
   data() {
     return {

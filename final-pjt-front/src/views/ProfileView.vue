@@ -27,6 +27,9 @@
         </router-link>
       </li>
     </ul>
+    <h3>
+      <router-link :to="{ name: 'profileEdit' }">프로필 수정</router-link>
+    </h3>
   </div>
 </template>
 
