@@ -16,6 +16,10 @@ export default {
     profile: (state) => state.profile,
     authError: (state) => state.authError,
     isAuthError: (state) => !!state.authError,
+    isMe: (state, getters) => {
+      // return state.article.user.username === getters.currentUser.user.username
+      return state.profile?.username === getters.currentUser?.username
+    },
   },
 
   mutations: {

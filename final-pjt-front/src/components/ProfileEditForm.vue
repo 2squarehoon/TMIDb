@@ -1,19 +1,17 @@
 <template>
-  <div>
-    <form @submit.prevent="onSubmit">
-      <div>
-        <label for="user_or_critic">user_or_critic: </label>
-        <input type="text" id="user_or_critic" v-model="newProfile.user_or_critic">
-      </div>
-      <div>
-        <label for="foreign_or_domestic">foreign_or_domestic: </label>
-        <input type="text" id="foreign_or_domestic" v-model="newProfile.foreign_or_domestic">
-      </div>
-      <div>
-        <button>수정</button>
-      </div>
-    </form>
-  </div>
+  <form @submit.prevent="onSubmit">
+    <div>
+      <label for="user_or_critic">user_or_critic: </label>
+      <input type="text" id="user_or_critic" v-model="newProfile.user_or_critic">
+    </div>
+    <div>
+      <label for="foreign_or_domestic">foreign_or_domestic: </label>
+      <input type="text" id="foreign_or_domestic" v-model="newProfile.foreign_or_domestic">
+    </div>
+    <div>
+      <button>{{ action }}</button>
+    </div>
+  </form>
 </template>
 
 <script>
@@ -22,8 +20,9 @@ export default {
   name: 'ProfileEditForm',
   props: {
     profile: {
-      type: Object
-    }
+      type: Object,
+    },
+    action: String,
   },
   data() {
     return {
@@ -34,10 +33,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['updateProfile']),
+    ...mapActions(['updateProfile', 'fetchProfile']),
     onSubmit() {
       const payload = { username: this.username, ...this.newProfile}
       this.updateProfile(payload)
+      console.log(this.profile)
     }
   },
   watch: {
@@ -49,6 +49,8 @@ export default {
   },
   created() {
     console.log(this.profile)
+    const payload = { username: this.$route.params.username }
+    this.fetchProfile(payload)
   }
 }
 </script>
