@@ -15,7 +15,13 @@ export default {
     // isAuthor: (state, getters) => {
     //   return state.review.user?.username === getters.currentUser?.username
     // },
-    // isReview: (state) => state.review
+    // isReview: (state, getters) => {
+    //   const reviewed = state.reviews.some((review) => {
+    //     return review.user.username === getters.currentUser
+    //   })
+    //   console.log(reviewed)
+    //   return reviewed
+    // } 
   },
 
   mutations: {
@@ -50,14 +56,14 @@ export default {
         })
         // .catch((err) => console.error(err.response))
     },
-    // likeMovie({ commit }, { moviePk }) {
-    //   movie
-    //     .like(moviePk)
-    //     .then((res) => {
-    //       commit("SET_MOVIE", res.data);
-    //     })
-    //     .catch((err) => console.error(err.response))
-    // },
+    likeMovie({ commit }, { moviePk }) {
+      movie
+        .like(moviePk)
+        .then((res) => {
+          commit("SET_MOVIE", res.data);
+        })
+        .catch((err) => console.error(err.response))
+    },
     createReview({ commit }, { moviePk, score, content }) {
       const body = { score, content }
       review
