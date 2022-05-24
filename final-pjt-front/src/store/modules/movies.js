@@ -15,6 +15,7 @@ export default {
     // isAuthor: (state, getters) => {
     //   return state.review.user?.username === getters.currentUser?.username
     // },
+    // isReview: (state) => state.review
   },
 
   mutations: {
