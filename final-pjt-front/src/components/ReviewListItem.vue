@@ -5,7 +5,7 @@
     </router-link>: 
     
     <span v-if="!isEditing">{{ payload.score }} | {{ payload.content }}</span>
-
+  
     <span v-if="isEditing">
       <input type="text" v-model="payload.content">
       <button @click="onUpdate">Update</button> |
