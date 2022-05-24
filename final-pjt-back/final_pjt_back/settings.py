@@ -168,3 +168,4 @@ REST_FRAMEWORK = {
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
 }
+ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
