@@ -11,9 +11,9 @@
             type="text"
             placeholder="영화제목을 검색하세요"
             v-model="keyword"
-            @keyup.enter="searchMovie(keyword)"
+            @keyup.enter="searchMovies(keyword)"
           >
-          <button type="submit" @click="searchMovie(keyword)">검색</button>
+          <button type="submit" @click="searchMovies(keyword)">검색</button>
         </span>
       </li>
       <li v-if="!isLoggedIn">
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'NavBar',
@@ -51,8 +51,9 @@ export default {
     }
   },
   methods: {
-    searchMovie(keyword) {
-      if (keyword !== ''){
+    ...mapActions(['searchMovie']),
+    searchMovies(keyword) {
+      if (keyword.trim()){
         this.$router.push({
           name: "searchMovie",
           params: {
@@ -61,9 +62,10 @@ export default {
           },
         })
         this.keyword = ''
-        console.log(keyword)
+        // console.log(keyword) 
+        location.reload()
       } else {
-        alert('검색어 입력 웨않함?')
+        alert('않이 검색어 입력 웨않함?')
       }
     }
   }

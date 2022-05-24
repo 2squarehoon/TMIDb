@@ -7,7 +7,6 @@
         <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }">
           {{ movie.korean_title }}
         </router-link>
-        <!-- <p>{{ movie.korean_title }}</p> -->
       </li>
     </ul>
   </div>
@@ -20,7 +19,8 @@ export default {
   name: 'searchMovie',
   data() {
     return {
-      keyword: ''
+      keyword: '',
+      isResultShow: false,
     }
   },
   computed: {
@@ -32,8 +32,8 @@ export default {
   created() {
     this.keyword = this.$route.params.keyword
     this.searchMovie({keyword: this.keyword})
-    console.log(this.keyword)
-    console.log('hi')
+    // console.log(this.keyword)
+    // console.log('hi')
   },
 }
 </script>

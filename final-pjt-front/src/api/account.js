@@ -35,4 +35,11 @@ export default {
       url: `${END_POINT}/profile/${username}/`,
     })
   },
+  edit(username, data) {
+    return api({
+      method: "put",
+      url: `${END_POINT}/profile/${username}/edit`,
+      data: data,
+    })
+  }
 }
