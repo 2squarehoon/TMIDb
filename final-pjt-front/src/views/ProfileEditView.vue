@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Edit Profile</h1>
-    <profile-edit-form :username="username" action="update"></profile-edit-form>
+    <profile-edit-form :username="username" action="edit"></profile-edit-form>
   </div>
 </template>
 
@@ -25,9 +25,9 @@ export default {
     ...mapActions(['fetchProfile'])
   },
   created() {
-    console.log('edit')
     this.username = this.$route.params.username
     this.fetchProfile({ username: this.username })
+    console.log(this.username)
   }
 }
 </script>

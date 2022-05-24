@@ -87,7 +87,7 @@ export default {
       })
     },
     updateProfile({ commit, getters }, {username, user_or_critic, foreign_or_domestic}) {
-      const body = { user_or_critic, foreign_or_domestic}
+      const body = { user_or_critic, foreign_or_domestic }
       account
         .edit(username, body)
         .then((res) => {
