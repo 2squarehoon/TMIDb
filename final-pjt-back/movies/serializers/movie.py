@@ -19,3 +19,9 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ('pk', 'imdb_rating', 'num_votes', 'korean_title', 'genres', 'year', 'budget', 'mc_rating', 'rt_rating', 'naver_rating', 'naver_count', 'watcha_rating', 'watcha_count', 'poster_url', 'overview', 'reviews', 'like_users',)
+
+
+class RecommendationSerializer(serializers.ModelSerializer):
+
+    # MovieSerializer상속받아
+    result_value = 0
