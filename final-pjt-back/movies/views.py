@@ -2,6 +2,7 @@ from django.shortcuts import get_list_or_404, get_object_or_404
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
+from django.core.paginator import Paginator
 
 from .models import Movie, Review
 from .serializers.review import ReviewSerializer
@@ -70,3 +71,11 @@ def like_movie(request, movie_pk):
         movie.like_users.add(user)
         serializer = MovieSerializer(movie)
         return Response(serializer.data)
+
+@api_view(['GET'])
+def search(request, keyword):
+    movies = Movie.objects.all()
+    if keyword:
+        movies = movies.filter(korean_title__icontains=keyword)
+    serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data)
