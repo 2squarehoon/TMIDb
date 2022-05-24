@@ -6,7 +6,7 @@ import _ from "lodash"
 export default {
   state: {
     movies: [],
-    movie: {}
+    movie: {},
   },
 
   getters: {
@@ -21,7 +21,7 @@ export default {
     //   })
     //   console.log(reviewed)
     //   return reviewed
-    // } 
+    // } // 1인1리뷰 시도중...
   },
 
   mutations: {
@@ -78,7 +78,7 @@ export default {
       review
         .update(moviePk, reviewPk, body)
         .then((res) => {
-          commit("SET_MOVIE_REVIEWTS", res.data)
+          commit("SET_MOVIE_REVIEWS", res.data)
         })
         .catch((err) => console.error(err.response))
     },
@@ -90,6 +90,13 @@ export default {
         })
         .catch((err) => console.error(err.response))
     },
+    searchMovie({ commit }, { keyword }) {
+      movie
+        .search(keyword)
+        .then((res) => {
+          commit("SET_MOVIES", res.data)
+        })
+    }
   },
 
 }

@@ -10,6 +10,7 @@ import ArticleEditView from '@/views/ArticleEditView'
 import MovieHomeView from '@/views/MovieHomeView'
 import MovieRecommendView from '@/views/MovieRecommendView'
 import MovieDetailView from '@/views/MovieDetailView'
+import SearchMovieView from '@/views/SearchMovieView'
 
 import LoginView from '@/views/LoginView.vue'
 import LogoutView from '@/views/LogoutView.vue'
@@ -77,6 +78,11 @@ const routes = [
     path: '/movies/:moviePk',
     name: 'movie',
     component: MovieDetailView,
+  },
+  {
+    path: '/movies/search/:keyword',
+    name: 'searchMovie',
+    component: SearchMovieView,
   },
   {
     path: '/404',
