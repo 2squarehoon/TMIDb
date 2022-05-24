@@ -1,8 +1,8 @@
 <template>
 <!-- 영화 하나 클릭하면 나오는 상세페이지, 평점 및 댓글을 구현하기 위함. -->
   <div>
-    <h1>{{ movie.title }}</h1>
-    <p>{{ movie.overview }}</p>
+    <h1>{{ movie.korean_title }}</h1>
+    <!-- <p>{{ movie.overview }}</p> -->
     <!-- <div>
       Likeit: <button @click="likeMovie({ moviePk: movie.pk })">{{ like_count }}</button>
     </div> -->

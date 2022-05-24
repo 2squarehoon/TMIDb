@@ -1,11 +1,12 @@
 import router from "@/router"
 import movie from "@/api/movie"
-// import review from "@/api/review"
+import review from "@/api/review"
+import _ from "lodash"
 
 export default {
   state: {
     movies: [],
-    movie: { title: "", overview: ""}
+    movie: {}
   },
 
   getters: {
@@ -27,7 +28,10 @@ export default {
       movie
         .all()
         .then((res) => {
-          commit("SET_MOVIES", res.data);
+          // 홈 화면에서 랜덤으로 영화 6개 뽑아서 보여주기위함.
+          const random_movie = _.sampleSize(res.data, 6)
+          console.log(random_movie)
+          commit("SET_MOVIES", random_movie);
         })
         .catch((err) => console.error(err.response))
     },
@@ -53,32 +57,32 @@ export default {
     //     })
     //     .catch((err) => console.error(err.response))
     // },
-    // createReview({ commit }, { moviePk, score, content }) {
-    //   const body = { score, content }
-    //   review
-    //     .create(moviePk, body)
-    //     .then((res) => {
-    //       commit("SET_MOVIE_REVIEWS", res.data)
-    //     })
-    //     .catch((err) => console.error(err.response))
-    // },
-    // updateReview({ commit }, { moviePk, reviewPk, score, content }) {
-    //   const body = { score, content }
-    //   review
-    //     .update(moviePk, reviewPk, body)
-    //     .then((res) => {
-    //       commit("SET_MOVIE_REVIEWTS", res.data)
-    //     })
-    //     .catch((err) => console.error(err.response))
-    // },
-    // deleteReview({ commit }, { moviePk, reviewPk }) {
-    //   review
-    //     .delete(moviePk, reviewPk)
-    //     .then((res) => {
-    //       commit("SET_MOVIE_REVIEWS", res.data)
-    //     })
-    //     .catch((err) => console.error(err.response))
-    // },
+    createReview({ commit }, { moviePk, score, content }) {
+      const body = { score, content }
+      review
+        .create(moviePk, body)
+        .then((res) => {
+          commit("SET_MOVIE_REVIEWS", res.data)
+        })
+        .catch((err) => console.error(err.response))
+    },
+    updateReview({ commit }, { moviePk, reviewPk, score, content }) {
+      const body = { score, content }
+      review
+        .update(moviePk, reviewPk, body)
+        .then((res) => {
+          commit("SET_MOVIE_REVIEWTS", res.data)
+        })
+        .catch((err) => console.error(err.response))
+    },
+    deleteReview({ commit }, { moviePk, reviewPk }) {
+      review
+        .delete(moviePk, reviewPk)
+        .then((res) => {
+          commit("SET_MOVIE_REVIEWS", res.data)
+        })
+        .catch((err) => console.error(err.response))
+    },
   },
 
 }
