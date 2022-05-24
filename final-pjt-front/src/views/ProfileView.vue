@@ -27,8 +27,8 @@
         </router-link>
       </li>
     </ul>
-    <h3>
-      <router-link :to="{ name: 'profileEdit' }">프로필 수정</router-link>
+    <h3 v-if="isMe">
+      <router-link :to="{ name: 'profileEdit', params: { username: this.username } }">프로필 수정</router-link>
     </h3>
   </div>
 </template>
@@ -39,15 +39,23 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'ProfileView',
+  data() {
+    return {
+      username: ''
+    }
+  },
   computed: {
-    ...mapGetters(['profile'])
+    ...mapGetters(['profile', 'isMe'])
   },
   methods: {
     ...mapActions(['fetchProfile'])
   },
   created() {
-    const payload = { username: this.$route.params.username }
-    this.fetchProfile(payload)
+    // const payload = { username: this.$route.params.username }
+    // this.fetchProfile(payload)
+    this.username = this.$route.params.username
+    this.fetchProfile({ username: this.username})
+    console.log(this.username)
   },
 }
 </script>
