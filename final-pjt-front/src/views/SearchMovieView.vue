@@ -4,10 +4,10 @@
     <p>총 {{ movies.length }}개의 영화가 검색되었습니다.</p>
     <ul>
       <li v-for="movie in movies" :key="movie.pk">
-        <!-- <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }">
+        <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }">
           {{ movie.korean_title }}
-        </router-link> -->
-        <p>{{ movie.korean_title }}</p>
+        </router-link>
+        <!-- <p>{{ movie.korean_title }}</p> -->
       </li>
     </ul>
   </div>
@@ -18,7 +18,11 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'searchMovie',
-  props: [ 'keyword' ],
+  data() {
+    return {
+      keyword: ''
+    }
+  },
   computed: {
     ...mapGetters(['movies'])
   },
@@ -26,7 +30,8 @@ export default {
     ...mapActions(['searchMovie'])
   },
   created() {
-    this.searchMovie(this.keyword)
+    this.keyword = this.$route.params.keyword
+    this.searchMovie({keyword: this.keyword})
     console.log(this.keyword)
     console.log('hi')
   },
