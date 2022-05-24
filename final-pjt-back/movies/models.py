@@ -20,6 +20,7 @@ class Movie(models.Model):
     watcha_count = models.CharField(max_length=10)
     poster_url = models.CharField(max_length=200)
     overview = models.TextField()
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
 
 class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reviews')
