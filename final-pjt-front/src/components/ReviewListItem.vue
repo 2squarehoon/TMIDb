@@ -4,7 +4,7 @@
       {{ review.user.username }}
     </router-link>: 
     
-    <span v-if="!isEditing">{{ payload.content }}</span>
+    <span v-if="!isEditing">{{ payload.score }} | {{ payload.content }}</span>
 
     <span v-if="isEditing">
       <input type="text" v-model="payload.content">
