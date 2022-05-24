@@ -19,7 +19,7 @@ import ReviewListForm from '@/components/ReviewListForm.vue'
 export default {
   name: 'ReviewList',
   components: { ReviewListForm, ReviewListItem },
-  props: { comments: Array },
+  props: { reviews: Array },
 }
 </script>
 

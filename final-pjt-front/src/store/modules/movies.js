@@ -30,7 +30,7 @@ export default {
         .then((res) => {
           // 홈 화면에서 랜덤으로 영화 6개 뽑아서 보여주기위함.
           const random_movie = _.sampleSize(res.data, 6)
-          console.log(random_movie)
+          // console.log(random_movie)
           commit("SET_MOVIES", random_movie);
         })
         .catch((err) => console.error(err.response))

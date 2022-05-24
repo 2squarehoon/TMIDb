@@ -6,21 +6,21 @@ export default {
   create(moviePk, data) {
     return api({
       method: "post",
-      url: `movies/${moviePk}/comments/`,
+      url: `movies/${moviePk}/review/`,
       data: data,
     })
   },
   update(moviePk, reviewPk, data) {
     return api({
       method: "put",
-      url: `movies/${moviePk}/comments/${reviewPk}/`,
+      url: `movies/${moviePk}/review/${reviewPk}/`,
       data: data,
     })
   },
   delete(moviePk, reviewPk) {
     return api({
       method: "delete",
-      url: `articles/${moviePk}/comments/${reviewPk}/`,
+      url: `articles/${moviePk}/review/${reviewPk}/`,
     })
   },
 }
