@@ -14,8 +14,8 @@ def profile(request, username):
     serializer = ProfileSerializer(user)
     return Response(serializer.data)
 
-# @api_view(['GET'])
-# def profile_update(request, username):
-#     user = get_object_or_404(User, username=username)
-#     print(user)
-#     return Response()
+@api_view(['GET'])
+def profile_update(request, username):
+    user = get_object_or_404(User, username=username)
+    print(user)
+    return Response()
