@@ -7,7 +7,10 @@
     <span v-if="!isEditing">{{ payload.score }} | {{ payload.content }}</span>
   
     <span v-if="isEditing">
-      <input type="text" v-model="payload.content">
+      <label for="score">평점: </label>
+      <input type="text" id="score" v-model="payload.score">
+      <label for="content">댓글: </label>
+      <input type="text" id="content" v-model="payload.content">
       <button @click="onUpdate">Update</button> |
       <button @click="switchIsEditing">Cancel</button>
       <!-- 평점 추가 필요 -->
