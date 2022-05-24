@@ -86,5 +86,18 @@ export default {
         commit("SET_PROFILE", res.data)
       })
     },
+    updateProfile({ commit, getters }, {username, user_or_critic, foreign_or_domestic}) {
+      const body = { user_or_critic, foreign_or_domestic}
+      account
+        .edit(username, body)
+        .then((res) => {
+          commit("SET_PROFILE", res.data)
+          router.push({
+            name: "profile",
+            params: { username: getters.profile.username},
+          })
+        })
+        .catch((err) => console.error(err.response))
+    }
   },
 }
