@@ -57,3 +57,16 @@ def review_update_or_delete(request, movie_pk, review_pk):
         return update_review()
     elif request.method == 'DELETE':
         return delete_review()
+
+@api_view(['POST'])
+def like_movie(request, movie_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    user = request.user
+    if movie.like_users.filter(pk=user.pk).exists():
+        movie.like_users.remove(user)
+        serializer = MovieSerializer(movie)
+        return Response(serializer.data)
+    else:
+        movie.like_users.add(user)
+        serializer = MovieSerializer(movie)
+        return Response(serializer.data)
