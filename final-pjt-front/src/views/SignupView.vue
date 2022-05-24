@@ -18,6 +18,14 @@
         <input type="password" id="password2" v-model="credentials.password2" required>
       </div>
       <div>
+        <label for="user_or_critic">user_or_critic:</label>
+        <input type="text" id="user_or_critic" v-model="credentials.user_or_critic" required>
+      </div>
+      <div>
+        <label for="foreign_or_domestic">foreign_or_domestic:</label>
+        <input type="text" id="foreign_or_domestic" v-model="credentials.foreign_or_domestic" required>
+      </div>
+      <div>
         <button>Signup</button>
       </div>
     </form>
@@ -37,6 +45,8 @@ export default {
         username: '',
         password1: '',
         password2: '',
+        user_or_critic: '',
+        foreign_or_domestic: '',
       },
     }
   },
