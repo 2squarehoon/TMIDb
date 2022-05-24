@@ -46,6 +46,9 @@ export default {
         this.newProfile = this.profile
       }
     }
+  },
+  created() {
+    console.log(this.profile)
   }
 }
 </script>
