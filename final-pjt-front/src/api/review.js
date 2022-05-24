@@ -20,7 +20,7 @@ export default {
   delete(moviePk, reviewPk) {
     return api({
       method: "delete",
-      url: `articles/${moviePk}/review/${reviewPk}/`,
+      url: `movies/${moviePk}/review/${reviewPk}/`,
     })
   },
 }

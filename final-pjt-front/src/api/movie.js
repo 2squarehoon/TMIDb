@@ -22,4 +22,10 @@ export default {
       url: `${END_POINT}/${id}/like/`,
     })
   },
+  search(keyword) {
+    return api({
+      method: "get",
+      url: `${END_POINT}/search/${keyword}`
+    })
+  },
 }

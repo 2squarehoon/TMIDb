@@ -1,5 +1,9 @@
 <template>
   <div>
+    <h1>Community</h1>
+    <div v-if="isLoggedIn">
+      <router-link :to="{ name: 'articleNew' }">New</router-link>
+    </div>
     <ul>
       <li v-for="article in articles" :key="article.pk">
         <!-- User -->
@@ -30,7 +34,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'ArticleList',
   computed: {
-    ...mapGetters(['articles'])
+    ...mapGetters(['articles', 'isLoggedIn'])
   },
   methods: {
     ...mapActions(['fetchArticles'])

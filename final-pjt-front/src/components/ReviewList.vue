@@ -16,7 +16,7 @@
 <script>
 import ReviewListItem from '@/components/ReviewListItem.vue'
 import ReviewListForm from '@/components/ReviewListForm.vue'
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 
 export default {
   name: 'ReviewList',
@@ -27,9 +27,9 @@ export default {
   //     isReview: this.isReview
   //   }
   // },
-  computed: {
-    ...mapGetters(['currentUser']),
-  },
+  // computed: {
+  //   ...mapGetters(['currentUser']),
+  // },
   // created() {
   //   console.log(reviewed)
   // }

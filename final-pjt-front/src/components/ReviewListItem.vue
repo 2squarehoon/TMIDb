@@ -13,7 +13,6 @@
       <input type="text" id="content" v-model="payload.content">
       <button @click="onUpdate">Update</button> |
       <button @click="switchIsEditing">Cancel</button>
-      <!-- 평점 추가 필요 -->
     </span>
 
     <span v-if="currentUser.username === review.user.username && !isEditing">
