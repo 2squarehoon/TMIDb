@@ -2,6 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from articles.models import Article
 from dj_rest_auth.registration.serializers import RegisterSerializer
+from movies.models import Movie
 
 class ProfileSerializer(serializers.ModelSerializer):
 
@@ -11,12 +12,19 @@ class ProfileSerializer(serializers.ModelSerializer):
             model = Article
             fields = ('pk', 'title', 'content')
 
+    class MovieSerializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = Movie
+            fields = ('pk', 'korean_title')
+
     like_articles = ArticleSerializer(many=True, read_only=True)
     articles = ArticleSerializer(many=True, read_only=True)
+    like_movies = MovieSerializer(many=True, read_only=True)
 
     class Meta:
         model = get_user_model()
-        fields = ('pk', 'username', 'email', 'like_articles', 'articles', 'user_or_critic', 'foreign_or_domestic')
+        fields = ('pk', 'username', 'email', 'like_articles', 'articles', 'user_or_critic', 'foreign_or_domestic', 'like_movies')
 
 class CustomRegisterSerializer(RegisterSerializer):
     user_or_critic = serializers.IntegerField()

@@ -23,7 +23,7 @@
     <ul>
       <li v-for="movie in profile.like_movies" :key="movie.pk">
         <router-link :to="{ name: 'movie', params: { moviePk: movie.pk } }">
-          {{ movie.title }}
+          {{ movie.korean_title }}
         </router-link>
       </li>
     </ul>
@@ -55,7 +55,7 @@ export default {
     // this.fetchProfile(payload)
     this.username = this.$route.params.username
     this.fetchProfile({ username: this.username})
-    console.log(this.username)
+    console.log(this.profile)
   },
 }
 </script>
