@@ -1,21 +1,29 @@
 <template>
   <div>
-    <h1>Login</h1>
-
+    <br>
     <account-error-list v-if="isAuthError"></account-error-list>
-
     <form @submit.prevent="login(credentials)">
-      <div>
-        <label for="username">username: </label>
-        <input v-model="credentials.username" type="text" id="username" required>
+      <div class="d-flex justify-content-center">
+        <div>
+          <div>
+            <label for="username">사용자 이름</label>
+          </div>
+            <input v-model="credentials.username" type="text" id="username" required>
+          <div>
+          </div>
+          <div>
+            <label for="password">비밀번호</label>
+          </div>
+          <div>
+            <input v-model="credentials.password" type="password" id="password" required>
+          </div>
+          <br>
+          <div>
+            <button>Login</button>
+          </div>
+        </div>
       </div>
 
-      <div>
-        <label for="password">password: </label>
-        <input v-model="credentials.password" type="password" id="password" required>
-      </div>
-
-      <button>Login</button>
     </form>
   </div>
 </template>
