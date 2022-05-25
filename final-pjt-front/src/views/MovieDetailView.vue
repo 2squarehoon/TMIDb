@@ -25,7 +25,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['movie']),
+    ...mapGetters(['movie', 'currentUser']),
     like_count() {
       // return article.like_users ? this.article.like_users.length : undefined
       return this.movie.like_users?.length

@@ -1,7 +1,7 @@
 <template>
 <!-- 메인화면 -->
   <div>
-    <h1 class="my-4">Home</h1>
+    <h1>Home</h1>
     <ul class="container-fluid">
       <li v-for="movie in movies" :key="movie.pk">
         <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }">
@@ -32,9 +32,7 @@ import { mapGetters, mapActions } from 'vuex'
 </script>
 
 <style>
-h1 {
-  text-align: center;
-}
+
 
 ul li {
   list-style-type: none; float: left;
