@@ -60,6 +60,7 @@ nav a.router-link-exact-active {
   text-align: center;
   text-decoration: none;
   justify-content: center;
+  position: relative;
 }
 .movie-card a {
   font-weight: bold;
@@ -70,5 +71,41 @@ nav a.router-link-exact-active {
   /* height: 350px; */
   height: 550px;
   margin-bottom: 10px;
+  /* transform: scale(1.1) */
 }
+
+.movie-card:hover img {
+  opacity: 0.1;
+  /* transform: scale(1.25); */
+}
+.movie-card .inner-content {
+  width: 80%;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-50%);
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transition: all 600ms ease;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.movie-card:hover .inner-content {
+  opacity: 1;
+  top: 50%;
+}
+.movie-card .inner-content .title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.movie-card .inner-content .rating {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.movie-card .inner-content hr {
+  border-top: 1px solid #f1f1f1;
+  width: 100%;
+}
+
 </style>
