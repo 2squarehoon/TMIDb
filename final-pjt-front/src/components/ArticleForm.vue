@@ -1,12 +1,12 @@
 <template>
-  <form @submit.prevent="onSubmit">
-    <div>
+  <form class="mx-3" @submit.prevent="onSubmit">
       <label for="title">title: </label>
-      <input type="text" id="title" v-model="newArticle.title">
-    </div>
     <div>
-      <label for="content">contnet: </label>
-      <textarea type="text" id="content" v-model="newArticle.content"></textarea>
+      <input style="width:50%" type="text" id="title" v-model="newArticle.title">
+    </div>
+      <label for="content">content: </label>
+    <div>
+      <textarea style="resize:none;width:50%" rows="10" type="text" id="content" v-model="newArticle.content"></textarea>
     </div>
     <div>
       <button>{{ action }}</button>

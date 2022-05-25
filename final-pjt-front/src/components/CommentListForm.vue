@@ -1,8 +1,12 @@
 <template>
   <form @submit.prevent="onSubmit" class="comment-list-form">
-    <label for="comment">댓글 : </label>
-    <input type="text" id="comment" v-model="content" required class="mx-3">
-    <button class="btn btn-primary">작성</button>
+    <div>
+      <textarea style="resize:none;width:100%;" rows="2" type="text" id="content" v-model="content" required class="mt-1 mr-2"></textarea>
+
+    </div>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-primary">댓글 달기</button>
+    </div>
   </form>
 </template>
 
