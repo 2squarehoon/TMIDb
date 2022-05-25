@@ -82,30 +82,38 @@ def search(request, keyword):
 
 
 def recommendation():
-    imdb_rating = 7.9
-    mc_rating = 75
-    rt_rating = 87
+    movies = Movie.objects.all()
+    results = []
+    for movie in movies:
 
-    naver_rating = 9.41
-    naver_count = 18696
-    watcha_rating = 4.3
-    watcha_rating *= 2
-    watcha_count = '104만명'
-    watcha_count.replace('만', '0000')
-    watcha_count.replace(',', '')
-    watcha_count.replace('명', '')
-    watcha_count = int(watcha_count)/100
+        imdb_rating = 7.9
+        mc_rating = 75
+        rt_rating = 87
 
-    user_or_critic = 8
-    foreign_or_domestic = 7
+        naver_rating = 9.41
+        naver_count = 18696
+        watcha_rating = 4.3
+        watcha_rating *= 2
+        watcha_count = '104만명'
+        watcha_count.replace('만', '0000')
+        watcha_count.replace(',', '')
+        watcha_count.replace('명', '')
+        watcha_count = int(watcha_count)/100
 
-    user_rating = imdb_rating
-    critic_rating = (mc_rating + rt_rating) / 20
-    user_or_critic_rating = user_rating*(10-user_or_critic) + critic_rating*user_or_critic
+        user_or_critic = 8
+        foreign_or_domestic = 7
 
-    foreign_rating = imdb_rating
-    domestic_rating = (naver_rating*naver_count + watcha_rating*watcha_count) / (naver_count+watcha_count)
-    foreign_or_domestic_rating = foreign_rating*(10-foreign_or_domestic) + domestic_rating*foreign_or_domestic
+        user_rating = imdb_rating
+        critic_rating = (mc_rating + rt_rating) / 20
+        user_or_critic_rating = user_rating*(10-user_or_critic) + critic_rating*user_or_critic
 
-    result_value = user_or_critic_rating + foreign_or_domestic_rating
+        foreign_rating = imdb_rating
+        domestic_rating = (naver_rating*naver_count + watcha_rating*watcha_count) / (naver_count+watcha_count)
+        foreign_or_domestic_rating = foreign_rating*(10-foreign_or_domestic) + domestic_rating*foreign_or_domestic
+
+        result_value = user_or_critic_rating + foreign_or_domestic_rating
+        results.append((result_value, movie))
+    results.sort(reverse=True)
+    results[:10]
+    
     return
