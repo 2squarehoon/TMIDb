@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Edit Profile</h1>
-    <profile-edit-form :username="username" action="edit"></profile-edit-form>
+    <profile-edit-form :profile="profile" action="edit"></profile-edit-form>
   </div>
 </template>
 

@@ -1,5 +1,6 @@
 <template>
   <form @submit.prevent="onSubmit">
+    <h3>{{ newProfile.username }}님의 프로필 변경</h3>
     <div>
       <label for="user_or_critic">user_or_critic: </label>
       <input type="text" id="user_or_critic" v-model="newProfile.user_or_critic">
@@ -27,6 +28,7 @@ export default {
   data() {
     return {
       newProfile: {
+        username: this.username,
         user_or_critic: this.profile.user_or_critic,
         foreign_or_domestic: this.profile.foreign_or_domestic
       }
@@ -37,7 +39,7 @@ export default {
     onSubmit() {
       const payload = { username: this.username, ...this.newProfile}
       this.updateProfile(payload)
-      console.log(this.profile)
+      console.log(payload)
     }
   },
   watch: {
