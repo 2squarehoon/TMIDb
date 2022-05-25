@@ -105,6 +105,14 @@ export default {
         });
       }
     },
+    fetchRecommendMovies({ commit }) {
+      movie
+        .recommend()
+        .then((res) => {
+          commit("SET_MOVIES", res.data);
+        })
+        .catch((err) => console.error(err.response))
+    }
   },
 
 }
