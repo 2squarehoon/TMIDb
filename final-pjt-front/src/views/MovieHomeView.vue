@@ -1,16 +1,16 @@
 <template>
 <!-- 메인화면 -->
-  <div>
+  <div class="container-fluid">
     <h1>Home</h1>
-    <ul class="container-fluid">
-      <li v-for="movie in movies" :key="movie.pk">
-        <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }">
-          <img :src="movie.poster_url" :alt="movie.korean_title" width="280px" class="mx-2">
+    <div class="row">
+      <div v-for="movie in movies" :key="movie.pk" class="movie-card col-3">
+        <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }" >
+          <img :src="movie.poster_url" :alt="movie.korean_title" class="movie-card-img col-12 justify-content-center">
           <h4>{{ movie.korean_title }}</h4>
         </router-link>
         <!-- 해야할것 : 이미지들 가운데정렬, 영화제목 한줄 넘어가면 다음줄로 -->
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -33,15 +33,4 @@ import { mapGetters, mapActions } from 'vuex'
 
 <style>
 
-
-ul li {
-  list-style-type: none; float: left;
-  text-decoration: none;
-}
-
-ul li a {
-  text-decoration: none;
-  color: #2c3e50;
-  text-align: center;
-}
 </style>
