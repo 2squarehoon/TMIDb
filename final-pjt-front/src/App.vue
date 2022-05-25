@@ -52,4 +52,20 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+
+.movie-card {
+  border: 1px solid black;
+  display: flex;
+  text-align: center;
+  text-decoration: none;
+}
+.movie-card a {
+  font-weight: bold;
+  color: #2c3e50;
+  text-decoration: none;
+}
+/* .movie-card-img {
+  margin-left: 15px;
+  margin-right: 15px;
+} */
 </style>

@@ -2,10 +2,11 @@
   <div id="searchResult">
     <h1>Movie Search</h1>
     <p>총 {{ movies.length }}개의 영화가 검색되었습니다.</p>
-    <ul>
+    <ul class="container-fluid">
       <li v-for="movie in movies" :key="movie.pk">
         <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }">
-          {{ movie.korean_title }}
+          <img :src="movie.poster_url" :alt="movie.korean_title" width="280px" class="mx-2">
+          <h4>{{ movie.korean_title }}</h4>
         </router-link>
       </li>
     </ul>
