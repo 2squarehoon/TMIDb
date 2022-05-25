@@ -1,41 +1,44 @@
 <template>
-  <nav>
-    <ul>
-      <!-- 나중에 home으로 가는 라우터에 로고 추가 -->
-      <li>
-        <router-link :to="{ name: 'home' }">Home</router-link>
-      </li>
-      <li>
-        <span>
-          <input 
-            type="text"
-            placeholder="영화제목을 검색하세요"
-            v-model="keyword"
-            @keyup.enter="searchMovies(keyword)"
-          >
-          <button type="submit" @click="searchMovies(keyword)">검색</button>
-        </span>
-      </li>
-      <li v-if="!isLoggedIn">
-        <router-link :to="{ name: 'login' }">Login</router-link>
-      </li>
-      <li v-if="!isLoggedIn">
-        <router-link :to="{ name: 'signup' }">Signup</router-link>
-      </li>
-      <li v-if="isLoggedIn">
-        <router-link :to="{ name: 'profile', params: { username } }">
-          {{ currentUser.username }}'s page
-        </router-link>
-      </li>
-      <li v-if="isLoggedIn">
-        <router-link :to="{ name: 'logout' }">Logout</router-link>
-      </li>
-    </ul>
+  <nav class="navbar navbar-light bg-light ">
+    <div class="container-fluid">
+        <!-- 나중에 home으로 가는 라우터에 로고 추가 -->
+      <router-link :to="{ name: 'home' }">
+        <img src="@/assets/logo.png" alt="#" height="40">
+      </router-link>
+      <form class="d-flex ms-auto">
+        <input 
+          type="text"
+          placeholder="영화제목을 검색하세요"
+          v-model="keyword"
+          @keyup.enter="searchMovies(keyword)"
+          class="form-control me-2"
+        >
+        <button type="submit" @click="searchMovies(keyword)" class="btn btn-outline-success">search</button>
+      </form>
+      <ul class="navbar-nav ms-auto">
+        <li v-if="!isLoggedIn" class="nav-item">
+          <router-link :to="{ name: 'login' }" class="nav-link">Login</router-link>
+        </li>
+        <li v-if="!isLoggedIn" class="nav-item">
+          <router-link :to="{ name: 'signup' }" class="nav-link">Signup</router-link>
+        </li>
+        <li v-if="isLoggedIn" class="nav-item">
+          <router-link :to="{ name: 'profile', params: { username } }" class="nav-link">
+            {{ currentUser.username }}'s page
+          </router-link>
+        </li>
+        <li v-if="isLoggedIn" class="nav-item">
+          <router-link :to="{ name: 'logout' }" class="nav-link">Logout</router-link>
+        </li>
+      </ul>
+      <!-- 왜 자꾸 줄바꿈되냐 ㅠㅠㅠㅠ -->
+    </div>
   </nav>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+
 
 export default {
   name: 'NavBar',
@@ -70,8 +73,12 @@ export default {
     }
   }
 }
+
 </script>
 
 <style>
+.nav-item {
+  flex-direction: row
+}
 
 </style>
