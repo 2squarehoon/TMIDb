@@ -1,5 +1,5 @@
 <template>
-  <li class="comment-list-item">
+  <li class="comment-list-item mx-2 my-1">
     <router-link :to="{ name: 'profile', params: { username: comment.user.username } }">
       {{ comment.user.username }}
     </router-link>: 
@@ -8,13 +8,13 @@
 
     <span v-if="isEditing">
       <input type="text" v-model="payload.content">
-      <button @click="onUpdate">Update</button> |
-      <button @click="switchIsEditing">Cancel</button>
+      <button @click="onUpdate" class="btn btn-primary">Update</button> |
+      <button @click="switchIsEditing" class="btn btn-warning">Cancel</button>
     </span>
 
     <span v-if="currentUser.username === comment.user.username && !isEditing">
-      <button @click="switchIsEditing">Edit</button> |
-      <button @click="deleteComment(payload)">Delete</button>
+      <button @click="switchIsEditing" class="btn btn-primary">Edit</button> 
+      <button @click="deleteComment(payload)" class="btn btn-warning">Delete</button>
     </span>
   </li>
 </template>
@@ -53,8 +53,7 @@ export default {
 </script>
 
 <style>
-.comment-list-item {
-  border: 1px solid green;
-
+.btn {
+  margin-left: 10px;
 }
 </style>

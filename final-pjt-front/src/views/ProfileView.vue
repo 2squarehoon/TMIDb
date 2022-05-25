@@ -55,7 +55,6 @@ export default {
     // this.fetchProfile(payload)
     this.username = this.$route.params.username
     this.fetchProfile({ username: this.username})
-    console.log(this.profile)
   },
 }
 </script>
