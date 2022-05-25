@@ -91,7 +91,8 @@ export default {
       })
     },
     updateProfile({ commit, getters }, {username, user_or_critic, foreign_or_domestic}) {
-      const body = { user_or_critic, foreign_or_domestic }
+      const body = { username, user_or_critic, foreign_or_domestic }
+      // username이 안넘어가서 너무너무 머리가 아팠는데 body에 넣어주니까 되네
       account
         .edit(username, body)
         .then((res) => {
