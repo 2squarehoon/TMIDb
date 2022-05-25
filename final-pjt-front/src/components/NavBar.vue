@@ -16,20 +16,23 @@
         <button type="submit" @click="searchMovies(keyword)" class="btn btn-outline-success">search</button>
       </form>
       <div class="navbar-nav ms-auto d-flex">
-          <router-link v-if="!isLoggedIn" class="nav-item" :to="{ name: 'login' }">Login</router-link>
-          <router-link :to="{ name: 'signup' }" v-if="!isLoggedIn" class="nav-item">Signup</router-link>
-          <router-link :to="{ name: 'profile', params: { username } }" v-if="isLoggedIn" class="nav-item">{{ currentUser.username }}'s page
-          </router-link>
-          <router-link :to="{ name: 'logout' }" v-if="isLoggedIn" class="nav-item">Logout</router-link>
+        <div v-if="!isLoggedIn">
+          <router-link class="nav-item" :to="{ name: 'login' }">Login</router-link>
+          <span> | </span>
+          <router-link :to="{ name: 'signup' }" class="nav-item">Signup</router-link>
+        </div>
+        <div v-if="isLoggedIn">
+          <router-link :to="{ name: 'profile', params: { username } }" class="nav-item">{{ currentUser.username }}님</router-link>
+          <span> | </span>
+          <router-link :to="{ name: 'logout' }" class="nav-item">Logout</router-link>
+        </div>
       </div>
-      <!-- 왜 자꾸 줄바꿈되냐 ㅠㅠㅠㅠ -->
     </div>
   </nav>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-
 
 export default {
   name: 'NavBar',
