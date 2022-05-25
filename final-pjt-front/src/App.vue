@@ -28,6 +28,12 @@ export default {
 </script>
 
 <style>
+h1 {
+  text-align: center;
+  padding-top: 10px;
+  padding-top: 5px;
+}
+
 .main {
   text-align: center;
   font-size: 25px;

@@ -6,29 +6,41 @@
       <table class="table row m-0">
         <thead class="col-12 thead-dark">
           <tr class="row w-100 m-0">
-            <th class="p-1 text-center col-1" >num</th>
-            <th class="p-1 col-8">제목</th>
-            <th class="p-1 col-3">작성자</th>
+            <th class="p-2 text-center col-1" >num</th>
+            <th class="p-2 col-8">제목</th>
+            <th class="p-2 col-2">작성자</th>
+            <th class="p-2 col-1 text-center">추천 수</th>
           </tr>
         </thead>
         <tbody v-for="article in articles" :key="article.pk" class="col-12">
           <tr class="row m-0">
-            <th class="col-1 p-1 text-center">
+            <th class="col-1 p-2 text-center">
               {{ article.pk }}
             </th>
-            <th class="col-8 p-1 text-truncate">
+            <th class="col-8 p-2 text-truncate">
               <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
-              {{ article.title }} ({{ article.comment_count }}) | +{{ article.like_count }}
+              {{ article.title }} ({{ article.comment_count }})
               </router-link>
             </th>
-            <th class="col-3 p-1 text-center text-truncate">
-              <router-link :to="{ name: 'profile', params: { username: article.user.username} }" class="row m-0">
+            <th class="col-2 p-2 text-center">
+              <router-link :to="{ name: 'profile', params: { username: article.user.username} }" class="row m-0 ">
               {{ article.user.username }}
               </router-link>
+            </th>
+            <th class="col-1 p-2 text-center">
+              {{ article.like_count }}
             </th>
           </tr>
         </tbody>
       </table>
+      <!-- <div class="d-flex justify-content-center my-5">
+        <ul class="pagination">
+          <li class="page-item">
+          </li>
+          <li class="page-item">
+          </li>
+        </ul>
+      </div> -->
     </div>
 
   </div>
@@ -54,5 +66,8 @@ export default {
 </script>
 
 <style>
-
+th a{
+  text-decoration: none;
+  color: #2c3e50;
+}
 </style>
