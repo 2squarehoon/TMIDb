@@ -1,21 +1,25 @@
 <template>
-  <div>
+  <div class="article-detail container px-1 min-vh-100">
     <h1>{{ article.title }}</h1>
-
-    <p>
-      {{ article.content }}
-    </p>
-    <!-- Article Edit/Delete UI -->
+    <h3 class="author">작성자 : 
+      <router-link :to="{ name: 'profile', params: { username: article.user.username} }">
+        {{ article.user.username }}
+      </router-link>
+    </h3>
     <div v-if="isAuthor">
       <router-link :to="{ name: 'articleEdit', params: { articlePk: article.pk} }">
-        <button>Edit</button>
-      </router-link> | 
-      <button @click="deleteArticle({ articlePk: article.pk })">Delete</button>
+        <button class="btn btn-primary">Edit</button>
+      </router-link> 
+      <button @click="deleteArticle({ articlePk: article.pk })" class="btn btn-warning">Delete</button>
     </div>
+    <h3>
+      {{ article.content }}
+    </h3>
+    <!-- Article Edit/Delete UI -->
 
     <!-- Article Like UI -->
     <div>
-      Likeit: <button @click="likeArticle({ articlePk: article.pk })">{{ like_count }}</button>
+      추천 <button @click="likeArticle({ articlePk: article.pk })">{{ like_count }}</button>
     </div>
     
     <hr>
@@ -56,5 +60,12 @@ export default {
 </script>
 
 <style>
+.article-detail {
+  border: 1px solid black;
+}
 
+.author a {
+  text-decoration: none;
+  color: #2c3e50;
+}
 </style>

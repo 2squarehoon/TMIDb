@@ -37,6 +37,7 @@ h1 {
 .main {
   text-align: center;
   font-size: 25px;
+  margin-bottom: 10px;
 }
 nav {
   padding: 10px;

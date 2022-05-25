@@ -1,8 +1,8 @@
 <template>
   <form @submit.prevent="onSubmit" class="comment-list-form">
-    <label for="comment">comment: </label>
-    <input type="text" id="comment" v-model="content" required>
-    <button>Comment</button>
+    <label for="comment">댓글 : </label>
+    <input type="text" id="comment" v-model="content" required class="mx-3">
+    <button class="btn btn-primary">작성</button>
   </form>
 </template>
 
@@ -36,5 +36,10 @@ export default {
   border: 1px solid black;
   margin: 1rem;
   padding: 1rem;
+}
+
+.comment-list-form input {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 </style>
