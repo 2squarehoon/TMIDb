@@ -56,16 +56,19 @@ nav a.router-link-exact-active {
 .movie-card {
   border: 1px solid black;
   display: flex;
+  width: 200px;
   text-align: center;
   text-decoration: none;
+  justify-content: center;
 }
 .movie-card a {
   font-weight: bold;
   color: #2c3e50;
   text-decoration: none;
 }
-/* .movie-card-img {
-  margin-left: 15px;
-  margin-right: 15px;
-} */
+.movie-card-img {
+  /* height: 350px; */
+  height: 550px;
+  margin-bottom: 10px;
+}
 </style>
