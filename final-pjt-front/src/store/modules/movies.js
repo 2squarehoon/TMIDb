@@ -89,6 +89,7 @@ export default {
           commit("SET_MOVIE_REVIEWS", res.data)
         })
         .catch((err) => console.error(err.response))
+        location.reload()
     },
     searchMovie({ commit }, { keyword }) {
       movie
