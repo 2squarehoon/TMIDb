@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-light bg-light ">
     <div class="container-fluid">
-        <!-- 나중에 home으로 가는 라우터에 로고 추가 -->
       <router-link :to="{ name: 'home' }">
         <img src="@/assets/logo.png" alt="#" height="40">
+        <!-- 이미지 나중에 만들어서 적용 -->
       </router-link>
       <form class="d-flex ms-auto">
         <input 
@@ -15,22 +15,13 @@
         >
         <button type="submit" @click="searchMovies(keyword)" class="btn btn-outline-success">search</button>
       </form>
-      <ul class="navbar-nav ms-auto">
-        <li v-if="!isLoggedIn" class="nav-item">
-          <router-link :to="{ name: 'login' }" class="nav-link">Login</router-link>
-        </li>
-        <li v-if="!isLoggedIn" class="nav-item">
-          <router-link :to="{ name: 'signup' }" class="nav-link">Signup</router-link>
-        </li>
-        <li v-if="isLoggedIn" class="nav-item">
-          <router-link :to="{ name: 'profile', params: { username } }" class="nav-link">
-            {{ currentUser.username }}'s page
+      <div class="navbar-nav ms-auto d-flex">
+          <router-link v-if="!isLoggedIn" class="nav-item" :to="{ name: 'login' }">Login</router-link>
+          <router-link :to="{ name: 'signup' }" v-if="!isLoggedIn" class="nav-item">Signup</router-link>
+          <router-link :to="{ name: 'profile', params: { username } }" v-if="isLoggedIn" class="nav-item">{{ currentUser.username }}'s page
           </router-link>
-        </li>
-        <li v-if="isLoggedIn" class="nav-item">
-          <router-link :to="{ name: 'logout' }" class="nav-link">Logout</router-link>
-        </li>
-      </ul>
+          <router-link :to="{ name: 'logout' }" v-if="isLoggedIn" class="nav-item">Logout</router-link>
+      </div>
       <!-- 왜 자꾸 줄바꿈되냐 ㅠㅠㅠㅠ -->
     </div>
   </nav>
