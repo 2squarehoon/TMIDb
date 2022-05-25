@@ -25,7 +25,13 @@ export default {
   search(keyword) {
     return api({
       method: "get",
-      url: `${END_POINT}/search/${keyword}`
+      url: `${END_POINT}/search/${keyword}/`
     })
   },
+  recommend() {
+    return api({
+      method: "get",
+      url: `${END_POINT}/recommendation/`
+    })
+  }
 }
