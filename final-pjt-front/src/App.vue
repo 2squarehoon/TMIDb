@@ -2,19 +2,11 @@
   <div id="app">
     <nav-bar></nav-bar>
     <hr>
-    <div>
-      <ul>
-        <li>
-          <router-link :to="{ name: 'home' }">Home</router-link>
-        </li>
-        <li>
-          <router-link :to="{ name: 'recommend' }">MovieRecommend</router-link>
-        </li>
-        <li>
-        <router-link :to="{ name: 'articles' }">Community</router-link>
-        </li>
-      </ul>
-    </div>
+    <nav class="main">
+      <router-link :to="{ name: 'home' }" class="mx-4">Home</router-link>  | 
+      <router-link :to="{ name: 'recommend' }" class="mx-4">MovieRecommend</router-link>  | 
+      <router-link :to="{ name: 'articles' }" class="mx-4">Community</router-link>
+    </nav>
     <router-view/>
   </div>
 </template>
@@ -36,5 +28,21 @@ export default {
 </script>
 
 <style>
+.main {
+  text-align: center;
+  font-size: 25px;
+}
+nav {
+  padding: 10px;
+}
 
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
