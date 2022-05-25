@@ -38,7 +38,7 @@ export default {
   edit(username, data) {
     return api({
       method: "put",
-      url: `${END_POINT}/profile/${username}/edit`,
+      url: `${END_POINT}/profile/${username}/update/`,
       data: data,
     })
   }
