@@ -3,12 +3,11 @@
   <div class="container-fluid">
     <h1>Home</h1>
     <div class="row">
-      <div v-for="movie in movies" :key="movie.pk" class="movie-card col-3">
+      <div v-for="movie in movies" :key="movie.pk" class="movie-card col-12 col-md-6 col-lg-4 col-xl-3 ">
         <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }" >
           <img :src="movie.poster_url" :alt="movie.korean_title" class="movie-card-img col-12 justify-content-center">
           <h4>{{ movie.korean_title }}</h4>
         </router-link>
-        <!-- 해야할것 : 이미지들 가운데정렬, 영화제목 한줄 넘어가면 다음줄로 -->
       </div>
     </div>
   </div>

@@ -1,15 +1,14 @@
 <template>
-  <div id="searchResult">
+  <div id="container-fluid">
     <h1>Movie Search</h1>
-    <p>총 {{ movies.length }}개의 영화가 검색되었습니다.</p>
-    <ul class="container-fluid">
-      <li v-for="movie in movies" :key="movie.pk">
-        <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }">
-          <img :src="movie.poster_url" :alt="movie.korean_title" width="280px" class="mx-2">
+    <div class="row">
+      <div v-for="movie in movies" :key="movie.pk" class="movie-card col-12 col-md-6 col-lg-4 col-xl-3 ">
+        <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }" >
+          <img :src="movie.poster_url" :alt="movie.korean_title" class="movie-card-img col-12 justify-content-center">
           <h4>{{ movie.korean_title }}</h4>
         </router-link>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </template>
 
