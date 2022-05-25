@@ -1,33 +1,35 @@
 import router from "@/router"
 import movie from "@/api/movie"
 import review from "@/api/review"
+import account from "@/api/account"
 import _ from "lodash"
 
 export default {
   state: {
     movies: [],
     movie: {},
+    isReview: false,
+    currentUser: {},
   },
 
   getters: {
     movies: (state) => state.movies,
     movie: (state) => state.movie,
-    // isAuthor: (state, getters) => {
-    //   return state.review.user?.username === getters.currentUser?.username
-    // },
-    // isReview: (state, getters) => {
-    //   const reviewed = state.reviews.some((review) => {
-    //     return review.user.username === getters.currentUser
-    //   })
-    //   console.log(reviewed)
-    //   return reviewed
-    // } // 1인1리뷰 시도중...
+    isReview(state) {
+      state.movie.reviews?.forEach(review => {
+        if (review.user.username === state.currentUser.username) {
+          state.isReview = true
+        }
+      })
+      return state.isReview
+    }
   },
 
   mutations: {
     SET_MOVIES: (state, movies) => (state.movies = movies),
     SET_MOVIE: (state, movie) => (state.movie = movie),
     SET_MOVIE_REVIEWS: (state, reviews) => (state.movie.reviews = reviews),
+    SET_CURRENT_USER: (state, user) => (state.currentUser = user),
   },
 
   actions: {
@@ -37,7 +39,6 @@ export default {
         .then((res) => {
           // 홈 화면에서 랜덤으로 영화 6개 뽑아서 보여주기위함.
           const random_movie = _.sampleSize(res.data, 6)
-          // console.log(random_movie)
           commit("SET_MOVIES", random_movie);
         })
         .catch((err) => console.error(err.response))
@@ -54,7 +55,6 @@ export default {
             router.push({ name: "NotFound404" });
           }
         })
-        // .catch((err) => console.error(err.response))
     },
     likeMovie({ commit }, { moviePk }) {
       movie
@@ -96,7 +96,14 @@ export default {
         .then((res) => {
           commit("SET_MOVIES", res.data)
         })
-    }
+    },
+    fetchCurrentUser({ commit, getters }) {
+      if (getters.isLoggedIn) {
+        account.currentUser().then((res) => {
+          commit("SET_CURRENT_USER", res.data)
+        });
+      }
+    },
   },
 
 }

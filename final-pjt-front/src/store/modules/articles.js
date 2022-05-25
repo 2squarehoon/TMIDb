@@ -12,7 +12,6 @@ export default {
     articles: (state) => state.articles,
     article: (state) => state.article,
     isAuthor: (state, getters) => {
-      // return state.article.user.username === getters.currentUser.user.username
       return state.article.user?.username === getters.currentUser?.username
     },
   },
