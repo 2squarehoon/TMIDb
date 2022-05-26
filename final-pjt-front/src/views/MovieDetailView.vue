@@ -15,8 +15,9 @@
         <h5>Rotten Tomatoes : {{ movie.rt_rating }}/100</h5>
         <hr>
         <p>{{ movie.overview }}</p>
-        <div>
-          좋아요 : <button @click="likeMovie({ moviePk: movie.pk })">{{ like_count }}</button>
+        <div style="color:gray;">
+          <button @click="likeMovie({ moviePk: movie.pk })">좋아요</button>
+          {{ like_count }}명이 이 영화를 좋아합니다
         </div>
         <hr>
         <review-list :reviews="movie.reviews"></review-list>

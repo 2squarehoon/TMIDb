@@ -1,8 +1,8 @@
 <template>
-  <li class="review-list-item">
-    <router-link :to="{ name: 'profile', params: { username: review.user.username } }">
+  <div class="review-list-item">
+    <router-link style="color:whitesmoke;" :to="{ name: 'profile', params: { username: review.user.username } }">
       {{ review.user.username }}
-    </router-link>: 
+    </router-link>
     <span v-if="!isEditing"> 
       <div class="star-ratings">
         <div 
@@ -15,7 +15,10 @@
           <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
         </div>
       </div>
-      {{ payload.content }}</span>
+      <div style="color:whitesmoke;">
+        {{ payload.content }}
+      </div>
+    </span>
   
     <span v-if="isEditing">
       <div class="star-rating">
@@ -30,19 +33,17 @@
         <input type="radio" id="1-star" name="rating" value="1" v-model="payload.score"/>
         <label for="1-star" class="star">&#9733;</label>
       </div>
-      <!-- <label for="score">평점: </label>
-      <input type="text" id="score" v-model="payload.score"> -->
-      <label for="content">댓글: </label>
-      <input type="text" id="content" v-model="payload.content">
-      <button @click="onUpdate">Update</button> |
-      <button @click="switchIsEditing">Cancel</button>
+      <textarea style="resize:none;width:100%;" rows="2" type="text" id="content" v-model="payload.content" required class="mt-1 mr-2"></textarea>
+      <button @click="onUpdate">완료</button>&nbsp;
+      <button @click="switchIsEditing">취소</button>
     </span>
 
     <span v-if="currentUser.username === review.user.username && !isEditing">
-      <button @click="switchIsEditing">Edit</button> |
-      <button @click="deleteReview(payload)">Delete</button>
+      <button @click="switchIsEditing">수정</button>&nbsp;
+      <button @click="deleteReview(payload)">삭제</button>
     </span>
-  </li>
+    <hr>
+  </div>
 </template>
 
 <script>
