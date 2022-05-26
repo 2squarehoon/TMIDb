@@ -128,4 +128,41 @@ nav a {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.button-3{
+  width:120px;
+  height:40px;
+  border:2px solid whitesmoke;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  box-sizing:border-box;
+  overflow:hidden;
+  ;
+}
+.button-3 a{
+  font-family:arial;
+  font-size:16px;
+  color: whitesmoke;
+  text-decoration:none;
+  line-height:40px;
+  transition:all .5s ease;
+  z-index:2;
+  position:relative;
+}
+.eff-3{
+  width:120px;
+  height:40px;
+  bottom:-50px;
+  background:whitesmoke;
+  position:absolute;
+  transition:all .5s ease;
+  z-index:1;
+}
+.button-3:hover .eff-3{
+  bottom:0;
+}
+.button-3:hover a{
+  color: black;
+}
 </style>

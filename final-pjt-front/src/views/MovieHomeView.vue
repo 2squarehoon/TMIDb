@@ -1,9 +1,6 @@
 <template>
 <!-- 메인화면 -->
   <div class="container-fluid">
-    <div class="d-flex justify-content-center">
-      <p>평점 수가 많은 영화순</p>
-    </div>
     <div class="row">
       <div v-for="movie in movies" :key="movie.pk" class="movie-card col-3 mb-4">
         <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }" >

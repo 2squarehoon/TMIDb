@@ -20,10 +20,9 @@
     </div>
     <hr>
     <div style="color:gray;">
-      <button v-if="is_liked" @click="likeArticle({ articlePk: article.pk })">추천</button>
-      <button v-else @click="likeArticle({ articlePk: article.pk })">추천 취소</button>
-
-      {{ like_count }}명이 이 글을 추천합니다.
+      <button v-if="is_liked" @click="likeArticle({ articlePk: article.pk })"><font-awesome-icon icon="fa-regular fa-thumbs-up" /></button>
+      <button v-else @click="likeArticle({ articlePk: article.pk })"><font-awesome-icon icon="fa-solid fa-thumbs-up" /></button>
+      {{ like_count }}명이 이 글을 추천합니다
     </div>
     
     <!-- Comment UI -->

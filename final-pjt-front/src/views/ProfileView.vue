@@ -66,40 +66,5 @@ export default {
 </script>
 
 <style>
-.button-3{
-  width:120px;
-  height:40px;
-  border:2px solid #34495e;
-  text-align:center;
-  cursor:pointer;
-  position:relative;
-  box-sizing:border-box;
-  overflow:hidden;
-  ;
-}
-.button-3 a{
-  font-family:arial;
-  font-size:16px;
-  color:#34495e;
-  text-decoration:none;
-  line-height:40px;
-  transition:all .5s ease;
-  z-index:2;
-  position:relative;
-}
-.eff-3{
-  width:120px;
-  height:40px;
-  bottom:-50px;
-  background:#34495e;
-  position:absolute;
-  transition:all .5s ease;
-  z-index:1;
-}
-.button-3:hover .eff-3{
-  bottom:0;
-}
-.button-3:hover a{
-  color:#fff;
-}
+
 </style>
