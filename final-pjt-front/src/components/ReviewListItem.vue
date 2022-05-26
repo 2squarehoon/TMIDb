@@ -3,8 +3,19 @@
     <router-link :to="{ name: 'profile', params: { username: review.user.username } }">
       {{ review.user.username }}
     </router-link>: 
-    
-    <span v-if="!isEditing">{{ payload.score }} | {{ payload.content }}</span>
+    <span v-if="!isEditing"> 
+      <div class="star-ratings">
+        <div 
+          class="star-ratings-fill space-x-2 text-lg"
+          :style="{ width: score + '%' }"
+        >
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <div class="star-ratings-base space-x-2 text-lg">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+      </div>
+      {{ payload.content }}</span>
   
     <span v-if="isEditing">
       <div class="star-rating">
@@ -49,6 +60,7 @@ export default {
         score: this.review.score,
         content: this.review.content
       },
+      
     }
   },
   computed: {
@@ -62,8 +74,12 @@ export default {
     onUpdate() {
       this.updateReview(this.payload)
       this.isEditing = false
-    }
+      location.reload()
+    },
   },
+  created() {
+    this.score = this.payload.score * 20 + 1.5
+  }
 }
 </script>
 
@@ -95,5 +111,29 @@ export default {
 .star-rating label:hover,
 .star-rating label:hover ~ label {
   color:#fc0;
+}
+
+.star-ratings {
+  color: #aaa9a9; 
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+}
+ 
+.star-ratings-fill {
+  /* color: #fff58c; */
+  color: gold;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+ 
+.star-ratings-base {
+  z-index: 0;
+  padding: 0;
 }
 </style>

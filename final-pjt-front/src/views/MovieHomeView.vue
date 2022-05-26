@@ -10,8 +10,34 @@
         <div class="inner-content">
           <span class="title">{{ movie.korean_title }}</span>
           <hr>
-          <span class="rating">Naver : {{ movie.naver_rating }}/10.0</span>
-          <span class="rating">Watcha : {{ movie.watcha_rating }}/5.0</span>
+          <span class="rating">Naver : 
+            <div class="star-ratings">
+              <div 
+                class="star-ratings-fill space-x-2 text-lg"
+                :style="{ width: naver_score + '%' }"
+              >
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <div class="star-ratings-base space-x-2 text-lg">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+            </div>
+            {{ movie.naver_rating }}/10.0
+          </span>
+          <span class="rating">Watcha : 
+            <div class="star-ratings">
+              <div 
+                class="star-ratings-fill space-x-2 text-lg"
+                :style="{ width: watcha_score + '%' }"
+              >
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <div class="star-ratings-base space-x-2 text-lg">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+            </div>
+            {{ movie.watcha_rating }}/5.0
+          </span>
           <span class="rating">IMDb : {{ movie.imdb_rating }}/10.0</span>
           <span class="rating">Metacritic : {{ movie.mc_rating }}/100</span> 
           <span class="rating">Rotten Tomatoes : {{ movie.rt_rating }}/100</span>
@@ -34,10 +60,38 @@ import { mapGetters, mapActions } from 'vuex'
     },
     created() {
       this.fetchMovies()
+      this.naver_score = this.movie.naver_rating * 10
+      this.watcha_score = this.movie.watcha_rating * 20
+      this.imdb_score = this.movie.imdb_rating * 10
+      this.mc_score = this.movie.mc_rating * 20
+      this.rt_score = this.movie.rt_rationg * 20
     },
   }
 </script>
 
 <style>
-
+.star-ratings {
+  color: #aaa9a9; 
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+}
+ 
+.star-ratings-fill {
+  /* color: #fff58c; */
+  color: gold;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+ 
+.star-ratings-base {
+  color: black;
+  z-index: 0;
+  padding: 0;
+}
 </style>
