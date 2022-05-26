@@ -3,10 +3,13 @@
     <div class="container px-1 min-vh-100">
       <div class="d-flex justify-content-center">
     </div>
-      <div class="button-3">
-        <div class="eff-3"></div>
-        <router-link :to="{ name: 'articleNew' }" v-if="isLoggedIn">글 작성하기</router-link>
+      <div class="d-flex justify-content-end">
+        <div class="button-3">
+          <div class="eff-3"></div>
+          <router-link :to="{ name: 'articleNew' }" v-if="isLoggedIn">글 작성하기</router-link>
+        </div>
       </div>
+      <br>
       <table class="table row m-0">
         <thead class="col-12 thead-dark">
           <tr class="row w-100 m-0">
