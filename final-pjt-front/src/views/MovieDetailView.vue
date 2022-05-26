@@ -60,4 +60,28 @@ export default {
 .card-img-top {
   height: 800px;
 }
+
+.star-ratings {
+  color: #aaa9a9; 
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+}
+ 
+.star-ratings-fill {
+  /* color: #fff58c; */
+  color: gold;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+ 
+.star-ratings-base {
+  z-index: 0;
+  padding: 0;
+}
 </style>
