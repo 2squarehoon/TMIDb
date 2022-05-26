@@ -2,7 +2,7 @@
 <!-- 영화 하나 클릭하면 나오는 상세페이지, 평점 및 댓글을 구현하기 위함. -->
   <div class="container-fluid">
     <div class="row">
-      <img :src="movie.poster_url" :alt="movie.korean_title" class="col-8 col-sm-4 offset-2">
+      <img :src="movie.poster_url" :alt="movie.korean_title" class="col-8 col-sm-4 offset-2" height="800rem">
       <div class="col-8 col-sm-4">
         <h3>{{ movie.korean_title }}({{ movie.year }})</h3>
         <h5>{{ movie.genres }}</h5>
