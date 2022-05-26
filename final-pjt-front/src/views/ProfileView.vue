@@ -38,31 +38,35 @@
           </router-link>
         </li>
       </ul> -->
+      <button><router-link :to="{ name: 'movie', params: { moviePk: this.randomPk} }">random movie</router-link></button>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import _ from 'lodash'
 
 export default {
   name: 'ProfileView',
   data() {
     return {
-      username: ''
+      username: '',
+      randomPk: ''
     }
   },
   computed: {
     ...mapGetters(['profile', 'isMe'])
   },
   methods: {
-    ...mapActions(['fetchProfile'])
+    ...mapActions(['fetchProfile']),
   },
   created() {
     // const payload = { username: this.$route.params.username }
     // this.fetchProfile(payload)
     this.username = this.$route.params.username
     this.fetchProfile({ username: this.username})
+    this.randomPk = _.sample(_.range(1, 915))
   },
 }
 </script>
