@@ -1,8 +1,8 @@
 <template>
   <div>
-    <ul>
+    <ul class="mylist">
       <li v-for="movie in profile.like_movies" :key="movie.pk">
-        <router-link :to="{ name: 'movie', params: { moviePk: movie.pk } }">
+        <router-link class="routertext" :to="{ name: 'movie', params: { moviePk: movie.pk } }">
           {{ movie.korean_title }}
         </router-link>
       </li>
