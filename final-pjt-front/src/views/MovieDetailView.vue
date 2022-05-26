@@ -16,7 +16,12 @@
         <hr>
         <p>{{ movie.overview }}</p>
         <div style="color:gray;">
-          <button @click="likeMovie({ moviePk: movie.pk })">좋아요</button>
+          <div v-if="!is_liked">
+            <button @click="likeMovie({ moviePk: movie.pk })">좋아요</button>
+          </div>
+          <div v-else>
+            <button  @click="likeMovie({ moviePk: movie.pk })">좋아요 취소</button>
+          </div>
           {{ like_count }}명이 이 영화를 좋아합니다
         </div>
         <hr>
@@ -36,7 +41,8 @@ export default {
   components: { ReviewList },
   data() {
     return {
-      moviePk: ''
+      moviePk: '',
+      is_liked: false,
     }
   },
   computed: {
@@ -47,7 +53,11 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['fetchMovie', 'likeMovie'])
+    ...mapActions(['fetchMovie']),
+    likeMovie() {
+      this.is_liked = !this.is_liked
+      this.$store.dispatch('likeMovie', {moviePk: this.moviePk})
+    }
   },
   created() {
     this.moviePk = this.$route.params.moviePk

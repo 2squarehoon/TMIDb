@@ -10,6 +10,7 @@ export default {
     movie: {},
     isReview: false,
     currentUser: {},
+    like: false,
   },
 
   getters: {
@@ -22,7 +23,15 @@ export default {
         }
       })
       return state.isReview
-    }
+    },
+    like(state) {
+      state.movie.like_users?.forEach(user => {
+        if (user.username === state.currentUser.username) {
+          state.like = true
+        }
+      })
+      return state.like
+    },
   },
 
   mutations: {
@@ -50,7 +59,7 @@ export default {
           commit("SET_MOVIE", res.data)
         })
         .catch((err) => {
-          console.error(err.response);
+          console.error(err.response)
           if (err.response.status === 404) {
             router.push({ name: "NotFound404" });
           }
@@ -60,7 +69,7 @@ export default {
       movie
         .like(moviePk)
         .then((res) => {
-          commit("SET_MOVIE", res.data);
+          commit("SET_MOVIE", res.data)
         })
         .catch((err) => console.error(err.response))
     },
