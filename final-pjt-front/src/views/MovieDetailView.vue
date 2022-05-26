@@ -16,12 +16,12 @@
         <hr>
         <p>{{ movie.overview }}</p>
         <div style="color:gray;">
-          <div v-if="!is_liked">
-            <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-regular fa-heart" /></button>
+          <div v-if="is_liked">
+            <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-solid fa-heart" /></button>
             {{ like_count }}명이 이 영화를 좋아합니다
           </div>
           <div v-else>
-            <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-solid fa-heart" /></button>
+            <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-regular fa-heart" /></button>
             {{ like_count }}명이 이 영화를 좋아합니다
           </div>
         </div>

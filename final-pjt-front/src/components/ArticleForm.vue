@@ -1,19 +1,19 @@
 <template>
   <form class="mx-3" @submit.prevent="onSubmit">
-      <label for="title">title: </label>
+      <label for="title">제목</label>
     <div>
       <input style="width:50%" type="text" id="title" v-model="newArticle.title">
     </div>
-      <label for="content">content: </label>
+      <label for="content">내용</label>
     <div>
       <textarea style="resize:none;width:50%" rows="10" type="text" id="content" v-model="newArticle.content"></textarea>
     </div>
+    <br>
     <div>
-      <button>{{ action }}</button>
+      <button>작성</button>
     </div>
   </form>
 </template>
-
 <script>
 import { mapActions } from 'vuex'
 export default {
