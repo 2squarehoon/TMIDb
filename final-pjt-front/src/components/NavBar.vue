@@ -13,7 +13,7 @@
           @keyup.enter="searchMovies(keyword)"
           class="form-control me-2"
         >
-        <button type="submit" @click="searchMovies(keyword)" class="btn btn-outline-success">search</button>
+        <button type="submit" @click="searchMovies(keyword)" class="btn btn-outline-dark">search</button>
       </form>
       <div class="navbar-nav ms-auto d-flex">
         <div v-if="!isLoggedIn">

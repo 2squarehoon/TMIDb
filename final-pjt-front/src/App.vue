@@ -3,9 +3,22 @@
     <nav-bar></nav-bar>
     <hr>
     <nav class="main">
-      <router-link :to="{ name: 'home' }" class="mx-4">Home</router-link>  | 
-      <router-link :to="{ name: 'recommend' }" class="mx-4">MovieRecommend</router-link>  | 
-      <router-link :to="{ name: 'articles' }" class="mx-4">Community</router-link>
+      <!-- <div class="w-100 btn-group btn-group-sm overflow-auto" role="group">
+        <button id="btn-0" class="btn btn-outline-light my-2 my-sm-0"
+          onclick="location.href='{% url 'community:posts' %}'">전체게시판</button>
+        <button id="btn-1" class="btn btn-outline-light my-2 my-sm-0"
+          onclick="location.href='{% url 'community:pur_posts' 1 %}'">자유게시판</button>
+        <button id="btn-2" class="btn btn-outline-light my-2 my-sm-0"
+          onclick="location.href='{% url 'community:pur_posts' 2 %}'">건의게시판</button>
+        <button id="btn-3" class="btn btn-outline-light my-2 my-sm-0"
+          onclick="location.href='{% url 'community:pur_posts' 3 %}'">추천게시판</button>
+      </div> -->
+        <!-- <div class="button-3" v-if="isMe"> -->
+
+      <router-link :to="{ name: 'home' }" tag="button" class="btn-outline-dark mx-4">홈</router-link>
+      <router-link :to="{ name: 'recommend' }" tag="button" class="btn-outline-dark mx-4">추천 영화</router-link>
+      <router-link :to="{ name: 'articles' }" tag="button" class="btn-outline-dark mx-4">자유게시판</router-link>
+
     </nav>
     <router-view/>
   </div>
