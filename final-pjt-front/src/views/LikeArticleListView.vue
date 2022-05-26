@@ -1,8 +1,8 @@
 <template>
   <div>
-    <ul>
+    <ul class="mylist">
       <li v-for="article in profile.like_articles" :key="article.pk">
-        <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
+        <router-link class="routertext" :to="{ name: 'article', params: { articlePk: article.pk } }">
           {{ article.title }}
         </router-link>
       </li>
