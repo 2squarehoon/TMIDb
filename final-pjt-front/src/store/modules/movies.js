@@ -24,7 +24,7 @@ export default {
       })
       return state.isReview
     },
-    is_like(state) {
+    is_liked(state) {
       state.movie.like_users?.forEach(user => {
         if (user.username === state.currentUser.username) {
           state.is_liked = true
