@@ -17,13 +17,24 @@
         <p>{{ movie.overview }}</p>
         <div style="color:gray;">
           <div v-if="is_liked">
-            <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-solid fa-heart" /></button>
-            {{ like_count }}명이 이 영화를 좋아합니다
+            <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-solid fa-heart" /></button>{{ like_count }}명이 이 영화를 좋아합니다
           </div>
-          <div v-else>
-            <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-regular fa-heart" /></button>
-            {{ like_count }}명이 이 영화를 좋아합니다
+          <div v-if="!is_liked">
+            <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-regular fa-heart" /></button>{{ like_count }}명이 이 영화를 좋아합니다
           </div>
+          <!-- <div v-for="user in movie.like_users" :key="user.pk">
+            <div v-if="user.pk===currentUser.pk">
+              <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-solid fa-heart" /></button>
+              {{ like_count }}명이 이 영화를 좋아합니다
+            </div>
+          </div>
+          <div v-for="user in movie.like_users" :key="user.pk">
+            <div v-if="user.pk===currentUser.pk"></div>
+            <div v-else>
+              <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-regular fa-heart" /></button>
+              {{ like_count }}명이 이 영화를 좋아합니다
+            </div>
+          </div> -->
         </div>
         <hr>
         <review-list :reviews="movie.reviews"></review-list>
@@ -43,11 +54,11 @@ export default {
   data() {
     return {
       moviePk: '',
-      is_liked: false,
+      // is_liked: false,
     }
   },
   computed: {
-    ...mapGetters(['movie', 'currentUser']),
+    ...mapGetters(['movie', 'currentUser', 'is_liked']),
     like_count() {
       // return article.like_users ? this.article.like_users.length : undefined
       return this.movie.like_users?.length
@@ -57,34 +68,34 @@ export default {
     ...mapActions(['fetchMovie']),
     likeMovie() {
       // if (!this.is_liked) {
-        this.is_liked = !this.is_liked
+      // this.is_liked = !this.is_liked
       // }
-      console.log(this.is_liked)
+      // console.log(this.is_liked)
       this.$store.dispatch('likeMovie', {moviePk: this.moviePk})
+      location.reload()
     },
-    check() {
-      this.movie.like_users?.forEach(user => {
-        if (user.username === this.currentUser.username) {
-          this.is_liked = !this.is_liked
-        }
-      })
-      return this.is_liked
-    }
+    // check() {
+    //   this.movie.like_users?.forEach(user => {
+    //     if (user.username === this.currentUser.username) {
+    //       this.is_liked = !this.is_liked
+    //     }
+    //   })
+    //   return this.is_liked
+    // }
   },
   created() {
     this.moviePk = this.$route.params.moviePk
     this.fetchMovie({ moviePk: this.moviePk})
-    console.log(this.movie.korean_title)
-    // this.check()
-  },
-  mounted() {
-    console.log(this.movie.korean_title)
-  },
-  updated() {
     // console.log(this.movie.korean_title)
     // this.check()
-  }
-
+  },
+  // mounted() {
+  //   console.log(this.movie.korean_title)
+  // },
+  // updated() {
+    // console.log(this.movie.korean_title)
+    // this.check()
+  // }
 }
 </script>
 
