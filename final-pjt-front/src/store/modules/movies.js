@@ -10,7 +10,7 @@ export default {
     movie: {},
     isReview: false,
     currentUser: {},
-    like: false,
+    is_liked: false,
   },
 
   getters: {
@@ -24,13 +24,14 @@ export default {
       })
       return state.isReview
     },
-    like(state) {
+    is_like(state) {
       state.movie.like_users?.forEach(user => {
         if (user.username === state.currentUser.username) {
-          state.like = true
+          state.is_liked = true
+          console.log(state.is_liked)
         }
       })
-      return state.like
+      return state.is_liked
     },
   },
 
