@@ -9,39 +9,41 @@
         </div>
       </div>
       <div>
-        <h2>작성한 글</h2>
+        <router-link :to="{ name: 'writeArticleList', params: { username: this.username } }">작성한 글</router-link>
       </div>
-      <ul>
+      <!-- <ul>
         <li v-for="article in profile.articles" :key="article.pk">
           <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
             {{ article.title }}
           </router-link>
         </li>
-      </ul>
-
-      <h2>좋아요 한 글</h2>
-      <ul>
+      </ul> -->
+      <div>
+        <router-link :to="{ name: 'likeArticleList', params: { username: this.username } }">좋아요 한 글</router-link>
+      </div>
+      <!-- <ul>
         <li v-for="article in profile.like_articles" :key="article.pk">
           <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
             {{ article.title }}
           </router-link>
         </li>
-      </ul>
-      <h2>좋아요 누른 영화</h2>
-      <ul>
+      </ul> -->
+      <div>
+        <router-link :to="{ name: 'likeMovieList', params: { username: this.username } }">좋아요 누른 영화</router-link>
+      </div>
+      <!-- <ul>
         <li v-for="movie in profile.like_movies" :key="movie.pk">
           <router-link :to="{ name: 'movie', params: { moviePk: movie.pk } }">
             {{ movie.korean_title }}
           </router-link>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-
 
 export default {
   name: 'ProfileView',
