@@ -26,7 +26,6 @@ export default {
   created() {
     this.username = this.$route.params.username
     this.fetchProfile({ username: this.username })
-    console.log(this.username)
   }
 }
 </script>
