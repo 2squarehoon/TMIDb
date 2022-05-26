@@ -15,12 +15,12 @@
         <h5>Rotten Tomatoes : {{ movie.rt_rating }}/100</h5>
         <hr>
         <p>{{ movie.overview }}</p>
-        <div style="color:gray;">
+        <div class="like-msg">
           <div v-if="boo">
-            <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-solid fa-heart" /></button>{{ like_count }}명이 이 영화를 좋아합니다
+            <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-solid fa-heart" /></button>&nbsp;{{ like_count }}명이 이 영화를 좋아합니다
           </div>
           <div v-else>
-            <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-regular fa-heart" /></button>{{ like_count }}명이 이 영화를 좋아합니다
+            <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-regular fa-heart" /></button>&nbsp;{{ like_count }}명이 이 영화를 좋아합니다
           </div>
           <!-- <div v-for="user in movie.like_users" :key="user.pk">
             <div v-if="user.pk===currentUser.pk">
@@ -146,4 +146,5 @@ export default {
   z-index: 0;
   padding: 0;
 }
+
 </style>

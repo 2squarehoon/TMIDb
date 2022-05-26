@@ -6,7 +6,7 @@
       <div class="d-flex justify-content-end">
         <div class="button-3">
           <div class="eff-3"></div>
-          <router-link :to="{ name: 'articleNew' }" v-if="isLoggedIn">게시물 작성</router-link>
+          <router-link :to="{ name: 'articleNew' }" v-if="isLoggedIn">글쓰기</router-link>
         </div>
       </div>
       <br>
@@ -69,4 +69,5 @@ th a{
   text-decoration: none;
   color: #2c3e50;
 }
+
 </style>

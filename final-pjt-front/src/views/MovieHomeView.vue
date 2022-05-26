@@ -67,10 +67,10 @@
                 class="star-ratings-fill text-lg"
                 :style="{ width: movie.rt_rating + '%' }"
               >
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                <span></span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
               </div>
               <div class="star-ratings-base text-lg">
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                <span></span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
               </div>
             </div>
           </span>
