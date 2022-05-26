@@ -1,12 +1,7 @@
 <template>
   <div class="background" id="app">
     <nav-bar></nav-bar>
-    <hr>
-    <nav class="main">
-      <router-link :to="{ name: 'home' }" tag="button" class="btn-outline-dark mx-4">홈</router-link>
-      <router-link :to="{ name: 'recommend' }" tag="button" class="btn-outline-dark mx-4">추천 영화</router-link>
-      <router-link :to="{ name: 'articles' }" tag="button" class="btn-outline-dark mx-4">자유게시판</router-link>
-    </nav>
+    <br><br><br>
     <router-view/>
   </div>
 </template>
