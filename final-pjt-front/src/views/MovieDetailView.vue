@@ -16,25 +16,12 @@
         <hr>
         <p>{{ movie.overview }}</p>
         <div class="like-msg">
-          <div v-if="boo">
+          <div v-if="is_liked">
             <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-solid fa-heart" /></button>&nbsp;{{ like_count }}명이 이 영화를 좋아합니다
           </div>
           <div v-else>
             <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-regular fa-heart" /></button>&nbsp;{{ like_count }}명이 이 영화를 좋아합니다
           </div>
-          <!-- <div v-for="user in movie.like_users" :key="user.pk">
-            <div v-if="user.pk===currentUser.pk">
-              <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-solid fa-heart" /></button>
-              {{ like_count }}명이 이 영화를 좋아합니다
-            </div>
-          </div>
-          <div v-for="user in movie.like_users" :key="user.pk">
-            <div v-if="user.pk===currentUser.pk"></div>
-            <div v-else>
-              <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-regular fa-heart" /></button>
-              {{ like_count }}명이 이 영화를 좋아합니다
-            </div>
-          </div> -->
         </div>
         <hr>
         <review-list :reviews="movie.reviews"></review-list>
@@ -54,67 +41,52 @@ export default {
   data() {
     return {
       moviePk: '',
-      // is_liked: false,
-      boo: ''
+      boo: false
     }
   },
   computed: {
-    ...mapGetters(['movie', 'currentUser']),
+    ...mapGetters(['movie', 'currentUser', 'is_liked']),
     like_count() {
-      // return article.like_users ? this.article.like_users.length : undefined
       return this.movie.like_users?.length
     },
-    check() {
-      this.movie.like_users?.forEach(user => {
-        console.log(user.username)
-        if (user.username === this.currentUser.username) {
-          return true
-        }
-      })
-      return false
-    }
+    // check() {
+    //   this.movie.like_users?.forEach(user => {
+    //     console.log(user.username)
+    //     if (user.username === this.currentUser.username) {
+    //       return true
+    //     }
+    //   })
+    //   return false
+    // }
   },
-  watch: {
-    movie:{
-      handler() {
-        this.movie.like_users?.forEach(user => {
-        console.log(111,user)
-        console.log(user.username)
-        this.boo = false 
-        console.log(this)
-        if (user.username === this.currentUser.username) {
-          this.boo = true
-          console.log('같음')
-          return true
-        }
-      })
-      },
-      deep: true
-    }
-  },
+  // watch: {
+  //   movie:{
+  //     handler() {
+  //       this.movie.like_users?.forEach(user => {
+  //       console.log(111,user)
+  //       console.log(user.username)
+  //       this.boo = false 
+  //       console.log(this)
+  //       if (user.username === this.currentUser.username) {
+  //         this.boo = true
+  //         console.log('같음')
+  //         return true
+  //       }
+  //     })
+  //     },
+  //     deep: true
+  //   }
+  // },
   methods: {
     ...mapActions(['fetchMovie']),
     likeMovie() {
-      // if (!this.is_liked) {
-      // this.is_liked = !this.is_liked
-      // }
-      // console.log(this.is_liked)
       this.$store.dispatch('likeMovie', {moviePk: this.moviePk})
-      // location.reload()
     },
   },
   created() {
     this.moviePk = this.$route.params.moviePk
     this.fetchMovie({ moviePk: this.moviePk})
-    console.log(this.movie.korean_title)
   },
-  // mounted() {
-  //   console.log(this.movie.korean_title)
-  // },
-  // updated() {
-    // console.log(this.movie.korean_title)
-    // this.check()
-  // }
 }
 </script>
 

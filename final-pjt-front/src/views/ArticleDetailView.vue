@@ -20,7 +20,7 @@
     </div>
     <hr>
     <div class="like-msg">
-      <button v-if="is_liked" @click="likeArticle({ articlePk: article.pk })"><font-awesome-icon icon="fa-solid fa-thumbs-up" /></button>
+      <button v-if="isliked" @click="likeArticle({ articlePk: article.pk })"><font-awesome-icon icon="fa-solid fa-thumbs-up" /></button>
       <button v-else @click="likeArticle({ articlePk: article.pk })"><font-awesome-icon icon="fa-regular fa-thumbs-up" /></button>
       {{ like_count }}명이 이 글을 추천합니다
     </div>
@@ -45,20 +45,18 @@ export default {
   data() {
     return {
       articlePk: '',
-      is_liked: '',
     }
   },
   computed: {
-    ...mapGetters(['article', 'currentUser', 'isAuthor']),
+    ...mapGetters(['article', 'currentUser', 'isAuthor', 'isliked']),
     like_count() {
-      // return article.like_users ? this.article.like_users.length : undefined
       return this.article.like_users?.length
     },
   },
   methods: {
     ...mapActions(['fetchArticle', 'deleteArticle']),
     likeArticle() {
-      this.is_liked = !this.is_liked
+      // this.is_liked = !this.is_liked
       this.$store.dispatch('likeArticle', {articlePk: this.articlePk})
     }
   },
