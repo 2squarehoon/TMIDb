@@ -4,7 +4,7 @@
       {{ article.title }}
     </h2>
     <p class="author">
-      <router-link :to="{ name: 'profile', params: { username: article.user.username} }">
+      <router-link style="color:whitesmoke;" :to="{ name: 'profile', params: { username: article.user.username} }">
         작성자 : {{ article.user.username }}
       </router-link>
     </p>
@@ -14,7 +14,7 @@
     </p>
     <hr>
     <div class="d-flex justify-content-between">
-      <div>
+      <div style="color:whitesmoke;">
         추천 <button @click="likeArticle({ articlePk: article.pk })">{{ like_count }}</button>
       </div>
       
