@@ -17,6 +17,11 @@ import LogoutView from '@/views/LogoutView.vue'
 import SignupView from '@/views/SignupView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import ProfileEditView from '@/views/ProfileEditView.vue'
+
+import WriteArticleListView from '@/views/WriteArticleListView.vue'
+import LikeArticleListView from '@/views/LikeArticleListView.vue'
+import LikeMovieListView from '@/views/LikeMovieListView.vue'
+
 import NotFound404 from '../views/NotFound404.vue'
 
 Vue.use(VueRouter)
@@ -46,6 +51,21 @@ const routes = [
     path: '/profile/:username/edit',
     name: 'profileEdit',
     component: ProfileEditView
+  },
+  {
+    path: '/profile/:username/writeArticle',
+    name: 'writeArticleList',
+    component: WriteArticleListView
+  },
+  {
+    path: '/profile/:username/likeArticle',
+    name: 'likeArticleList',
+    component: LikeArticleListView
+  },  
+  {
+    path: '/profile/:username/likeMovie',
+    name: 'likeMovieList',
+    component: LikeMovieListView
   },
   // Articles
   {
