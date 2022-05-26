@@ -4,7 +4,7 @@
       {{ article.title }}
     </h2>
     <p class="author">
-      <router-link style="color:whitesmoke;" :to="{ name: 'profile', params: { username: article.user.username} }">
+      <router-link style="color:gray;" :to="{ name: 'profile', params: { username: article.user.username} }">
         작성자 : {{ article.user.username }}
       </router-link>
     </p>
@@ -12,18 +12,16 @@
     <p>
       {{ article.content }}
     </p>
+    <div class="d-flex justify-content-end mx-4" v-if="isAuthor">
+      <router-link :to="{ name: 'articleEdit', params: { articlePk: article.pk} }">
+        <button>수정</button>
+      </router-link>&nbsp;
+      <button @click="deleteArticle({ articlePk: article.pk })">삭제</button>
+    </div>
     <hr>
-    <div class="d-flex justify-content-between">
-      <div style="color:whitesmoke;">
-        추천 <button @click="likeArticle({ articlePk: article.pk })">{{ like_count }}</button>
-      </div>
-      
-      <div v-if="isAuthor">
-        <router-link :to="{ name: 'articleEdit', params: { articlePk: article.pk} }">
-          <button class="btn btn-primary">Edit</button>
-        </router-link> 
-        <button @click="deleteArticle({ articlePk: article.pk })" class="btn btn-warning">Delete</button>
-      </div>
+    <div style="color:gray;">
+      <button @click="likeArticle({ articlePk: article.pk })">추천</button>
+      {{ like_count }}명이 이 글을 추천합니다.
     </div>
     
     <!-- Comment UI -->
@@ -70,5 +68,10 @@ export default {
 .author a {
   text-decoration: none;
   color: black;
+}
+
+h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
