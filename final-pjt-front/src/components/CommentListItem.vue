@@ -1,22 +1,25 @@
 <template>
-  <li class="comment-list-item mx-2 my-1">
+  <div class="comment-list-item mx-2 my-1">
     <router-link style="color:whitesmoke;" :to="{ name: 'profile', params: { username: comment.user.username } }">
       {{ comment.user.username }}
     </router-link> 
     
-    <span style="color:whitesmoke;" v-if="!isEditing"> : {{ payload.content }}</span>
+    <div style="color:whitesmoke;" v-if="!isEditing">
+      {{ payload.content }}
+    </div>
 
     <span v-if="isEditing">
-      <input type="text" v-model="payload.content">
-      <button @click="onUpdate" class="btn btn-primary">Update</button> |
-      <button @click="switchIsEditing" class="btn btn-warning">Cancel</button>
+      <textarea style="resize:none;width:100%;" rows="2" type="text" id="content" v-model="payload.content" required class="mt-1 mr-2"></textarea>
+      <button @click="onUpdate">완료</button>&nbsp;
+      <button @click="switchIsEditing">취소</button>
     </span>
 
     <span v-if="currentUser.username === comment.user.username && !isEditing">
-      <button @click="switchIsEditing" class="btn btn-primary">Edit</button> 
-      <button @click="deleteComment(payload)" class="btn btn-warning">Delete</button>
+      <button @click="switchIsEditing">수정</button>&nbsp;
+      <button @click="deleteComment(payload)">삭제</button>
     </span>
-  </li>
+    <hr>
+  </div>
 </template>
 
 <script>
