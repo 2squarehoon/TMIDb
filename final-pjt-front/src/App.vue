@@ -1,24 +1,11 @@
 <template>
-  <div id="app">
+  <div class="background" id="app">
     <nav-bar></nav-bar>
     <hr>
     <nav class="main">
-      <!-- <div class="w-100 btn-group btn-group-sm overflow-auto" role="group">
-        <button id="btn-0" class="btn btn-outline-light my-2 my-sm-0"
-          onclick="location.href='{% url 'community:posts' %}'">전체게시판</button>
-        <button id="btn-1" class="btn btn-outline-light my-2 my-sm-0"
-          onclick="location.href='{% url 'community:pur_posts' 1 %}'">자유게시판</button>
-        <button id="btn-2" class="btn btn-outline-light my-2 my-sm-0"
-          onclick="location.href='{% url 'community:pur_posts' 2 %}'">건의게시판</button>
-        <button id="btn-3" class="btn btn-outline-light my-2 my-sm-0"
-          onclick="location.href='{% url 'community:pur_posts' 3 %}'">추천게시판</button>
-      </div> -->
-        <!-- <div class="button-3" v-if="isMe"> -->
-
       <router-link :to="{ name: 'home' }" tag="button" class="btn-outline-dark mx-4">홈</router-link>
       <router-link :to="{ name: 'recommend' }" tag="button" class="btn-outline-dark mx-4">추천 영화</router-link>
       <router-link :to="{ name: 'articles' }" tag="button" class="btn-outline-dark mx-4">자유게시판</router-link>
-
     </nav>
     <router-view/>
   </div>
@@ -62,9 +49,9 @@ nav a {
   text-decoration: none;
 }
 
-nav a.router-link-exact-active {
+/* nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 
 
 .movie-card {
@@ -129,5 +116,13 @@ nav a.router-link-exact-active {
   width: 100%;
 }
 
-
+.background{
+  height: 100vh;
+  overflow: hidden;
+  margin:0;
+  background-color: lightgrey;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 </style>

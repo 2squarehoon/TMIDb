@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-light bg-light ">
+  <nav class="navbar navbar-light nav-bg">
     <div class="container-fluid">
       <router-link :to="{ name: 'home' }">
         <img src="@/assets/logo.png" alt="#" height="40">
@@ -13,18 +13,18 @@
           @keyup.enter="searchMovies(keyword)"
           class="form-control me-2"
         >
-        <button type="submit" @click="searchMovies(keyword)" class="btn btn-outline-dark">search</button>
+        <button type="submit" @click="searchMovies(keyword)" class="btn btn-outline-light">search</button>
       </form>
       <div class="navbar-nav ms-auto d-flex">
         <div v-if="!isLoggedIn">
-          <router-link class="nav-item" :to="{ name: 'login' }">Login</router-link>
+          <router-link class="nav-item text-light" :to="{ name: 'login' }">Login</router-link>
           <span> | </span>
-          <router-link :to="{ name: 'signup' }" class="nav-item">Signup</router-link>
+          <router-link :to="{ name: 'signup' }" class="nav-item text-light">Signup</router-link>
         </div>
         <div v-if="isLoggedIn">
-          <router-link :to="{ name: 'profile', params: { username } }" class="nav-item">{{ currentUser.username }}님</router-link>
+          <router-link :to="{ name: 'profile', params: { username } }" class="nav-item text-light">{{ currentUser.username }}님의 프로필</router-link>
           <span> | </span>
-          <router-link :to="{ name: 'logout' }" class="nav-item">Logout</router-link>
+          <router-link :to="{ name: 'logout' }" class="nav-item text-light">Logout</router-link>
         </div>
       </div>
     </div>
@@ -75,4 +75,7 @@ export default {
   flex-direction: row
 }
 
+.nav-bg {
+  background-color: #666E82;
+}
 </style>
