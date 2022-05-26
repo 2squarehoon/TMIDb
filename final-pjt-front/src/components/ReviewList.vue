@@ -2,6 +2,7 @@
   <div class="review-list">
     <p style="color:gray;" v-if="isReview">리뷰는 한 번만 남길 수 있어요!</p>
     <review-list-form v-if="!isReview"></review-list-form>
+    <hr>
     <ul>
       <review-list-item 
         v-for="review in reviews" 
