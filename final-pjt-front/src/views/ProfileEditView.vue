@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Edit Profile</h1>
     <profile-edit-form :profile="profile" action="edit"></profile-edit-form>
   </div>
 </template>

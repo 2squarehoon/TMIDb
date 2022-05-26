@@ -1,34 +1,51 @@
 <template>
   <div>
-    <h1>Signup</h1>
-
+    <br>
     <account-error-list v-if="isAuthError"></account-error-list>
-
     <form @submit.prevent="signup(credentials)">
-      <div>
-        <label for="username">Username: </label>
-        <input type="text" id="username" v-model="credentials.username" required>
-      </div>
-      <div>
-        <label for="password1">Password: </label>
-        <input type="password" id="password1" v-model="credentials.password1" required>
-      </div>
-      <div>
-        <label for="password2">Password Confirmation:</label>
-        <input type="password" id="password2" v-model="credentials.password2" required>
-      </div>
-      <div class="customizing-range">
-        <label for="user_or_critic">user_or_critic: &nbsp;</label>
-        <input type="range" min="1" max="9" value="5" id="user_or_critic" class="slider" oninput="document.getElementById('user_or_critic_value').innerHTML=this.value;" v-model="credentials.user_or_critic" required>&nbsp;
-        <span id="user_or_critic_value" class="value">5</span>
-      </div>
-      <div class="customizing-range">
-        <label for="foreign_or_domestic">foreign_or_domestic: &nbsp;</label>
-        <input type="range" min="1" max="9" value="5" id="foreign_or_domestic" class="slider" oninput="document.getElementById('foreign_or_domestic_value').innerHTML=this.value;" v-model="credentials.foreign_or_domestic" required>&nbsp;
-        <span id="foreign_or_domestic_value" class="value">5</span>
-      </div>
-      <div>
-        <button>Signup</button>
+      <div class="d-flex justify-content-center">
+        <div>
+          <h1>회원가입</h1>
+          <div>
+            <label for="username">사용자 이름</label>
+            <div>
+              <input type="text" id="username" v-model="credentials.username" required>
+            </div>
+          </div>
+          <div>
+            <label for="password1">비밀번호</label>
+            <div>
+              <input type="password" id="password1" v-model="credentials.password1" required>
+            </div>
+          </div>
+          <div>
+            <label for="password2">비밀번호 확인</label>
+            <div>
+              <input type="password" id="password2" v-model="credentials.password2" required>
+            </div>
+          </div>
+          <hr>
+          <h3>평점 중요도(이후 프로필에서 수정할 수 있습니다)</h3>
+          <br>
+          <p>1. 관객의 평점과 비평가의 평점 중 어느 것이 더 중요하다고 생각하시나요?</p>
+          <p class="text-secondary">(관객의 평점이 중요하다면 1에 가깝게, 비평가의 평점이 중요하다면 9에 가깝게 설정해주세요)</p>
+          <div class="customizing-range">
+            <input type="range" min="1" max="9" value="5" id="user_or_critic" class="slider" oninput="document.getElementById('user_or_critic_value').innerHTML=this.value;" v-model="credentials.user_or_critic" required>&nbsp;
+            <span id="user_or_critic_value" class="value">5</span>
+            <br><br>
+          </div>
+          <br>
+          <div class="customizing-range">
+            <p>2. 전세계인의 평점과 한국인의 평점 중 어느 것이 더 중요하다고 생각하시나요?</p>
+            <p class="text-secondary">(전세계의 평점이 중요하다면 1에 가깝게, 한국인의 평점이 중요하다면 9에 가깝게 설정해주세요)</p>
+            <input type="range" min="1" max="9" value="5" id="foreign_or_domestic" class="slider" oninput="document.getElementById('foreign_or_domestic_value').innerHTML=this.value;" v-model="credentials.foreign_or_domestic" required>&nbsp;
+            <span id="foreign_or_domestic_value" class="value">5</span>
+          </div>
+          <div>
+            <br>
+            <button>가입하기</button>
+          </div>
+        </div>
       </div>
     </form>
   </div>

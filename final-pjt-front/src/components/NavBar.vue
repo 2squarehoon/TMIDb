@@ -17,14 +17,14 @@
       </form>
       <div class="navbar-nav ms-auto d-flex">
         <div v-if="!isLoggedIn">
-          <router-link class="nav-item text-light" :to="{ name: 'login' }">Login</router-link>
+          <router-link class="nav-item text-light" :to="{ name: 'login' }">로그인</router-link>
           <span> | </span>
-          <router-link :to="{ name: 'signup' }" class="nav-item text-light">Signup</router-link>
+          <router-link :to="{ name: 'signup' }" class="nav-item text-light">회원가입</router-link>
         </div>
         <div v-if="isLoggedIn">
           <router-link :to="{ name: 'profile', params: { username } }" class="nav-item text-light">{{ currentUser.username }}님의 프로필</router-link>
           <span> | </span>
-          <router-link :to="{ name: 'logout' }" class="nav-item text-light">Logout</router-link>
+          <router-link :to="{ name: 'logout' }" class="nav-item text-light">로그아웃</router-link>
         </div>
       </div>
     </div>
