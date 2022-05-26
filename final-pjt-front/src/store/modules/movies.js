@@ -10,7 +10,7 @@ export default {
     movie: {},
     isReview: false,
     currentUser: {},
-    // is_liked: false,
+    is_liked: false,
   },
 
   getters: {
@@ -25,15 +25,16 @@ export default {
       })
       return state.isReview
     },
-    // is_liked(state) {
-    //   state.movie.like_users?.forEach(user => {
-    //     if (user.username === state.currentUser.username) {
-    //       state.is_liked = true
-    //       console.log(state.is_liked)
-    //     }
-    //   })
-    //   return state.is_liked
-    // },
+    is_liked(state) {
+      state.is_liked = false
+      state.movie.like_users?.forEach(user => {
+        if (user.username === state.currentUser.username) {
+          state.is_liked = true
+          // console.log(state.is_liked)
+        }
+      })
+      return state.is_liked
+    },
   },
 
   mutations: {
@@ -79,7 +80,6 @@ export default {
         .like(moviePk)
         .then((res) => {
           commit("SET_MOVIE", res.data)
-          console.log('요청')
         })
         .catch((err) => console.error(err.response))
     },
