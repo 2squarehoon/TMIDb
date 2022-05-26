@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Edit Article</h1>
+    <h1>게시물 수정</h1>
     <article-form :article="article" action="update"></article-form>
   </div>
 </template>
