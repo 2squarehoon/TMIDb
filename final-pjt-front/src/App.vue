@@ -34,15 +34,8 @@ h1 {
   padding-top: 5px;
   color: whitesmoke;
 }
-h2 {
-  color: whitesmoke;
-}
 
-p {
-  color: whitesmoke;
-}
-
-th {
+h2, h3, h5, p, th {
   color: whitesmoke;
 }
 

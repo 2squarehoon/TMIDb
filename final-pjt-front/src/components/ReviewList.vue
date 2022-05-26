@@ -1,14 +1,14 @@
 <template>
   <div class="review-list">
-    <div v-if="isReview">평점은 한 번만 남길 수 있어요!</div>
+    <p style="color:gray;" v-if="isReview">리뷰는 한 번만 남길 수 있어요!</p>
     <review-list-form v-if="!isReview"></review-list-form>
-    <ul>
+    <div>
       <review-list-item 
         v-for="review in reviews" 
         :review="review" 
         :key="review.pk">
       </review-list-item>        
-    </ul>
+    </div>
   </div>  
 </template>
 

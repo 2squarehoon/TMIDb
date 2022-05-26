@@ -2,6 +2,10 @@
   <form @submit.prevent="onSubmit" class="review-list-form">
     <!-- <label for="score">평점: </label>
     <input type="text" id="score" v-model="score" required> -->
+    <p style="color:gray;">리뷰</p>
+    <textarea style="resize:none;width:100%;" rows="2" type="text" id="content" v-model="content" required class="mt-1 mr-2"></textarea>
+    <br>
+    <p style="color:gray;">별점</p>
     <div class="star-rating">
       <input type="radio" id="5-stars" name="rating" value="5" v-model="score"/>
       <label for="5-stars" class="star">&#9733;</label>
@@ -14,9 +18,9 @@
       <input type="radio" id="1-star" name="rating" value="1" v-model="score"/>
       <label for="1-star" class="star">&#9733;</label>
     </div>
-    <label for="content">댓글: </label>
-    <input type="text" id="content" v-model="content" required>
+    <br>
     <button>작성</button>
+    <hr>
   </form>
 </template>
 <script>
