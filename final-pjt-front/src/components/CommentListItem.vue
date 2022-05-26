@@ -1,10 +1,10 @@
 <template>
   <li class="comment-list-item mx-2 my-1">
-    <router-link :to="{ name: 'profile', params: { username: comment.user.username } }">
+    <router-link style="color:whitesmoke;" :to="{ name: 'profile', params: { username: comment.user.username } }">
       {{ comment.user.username }}
     </router-link> 
     
-    <span v-if="!isEditing"> : {{ payload.content }}</span>
+    <span style="color:whitesmoke;" v-if="!isEditing"> : {{ payload.content }}</span>
 
     <span v-if="isEditing">
       <input type="text" v-model="payload.content">
