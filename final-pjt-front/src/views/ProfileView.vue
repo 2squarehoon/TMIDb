@@ -9,13 +9,14 @@
         </div>
       </div>
       <div>
-        <router-link :to="{ name: 'writeArticleList', params: { username: this.username } }">작성한 글</router-link>
+      <br><br>
+      <div class="d-flex justify-content-center">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-outline-light"><router-link class="routertext" :to="{ name: 'writeArticleList', params: { username: this.username } }">작성한 게시글</router-link></button>
+          <button type="button" class="btn btn-outline-light"><router-link class="routertext" :to="{ name: 'likeArticleList', params: { username: this.username } }">좋아요한 게시글</router-link></button>
+          <button type="button" class="btn btn-outline-light"><router-link class="routertext" :to="{ name: 'likeMovieList', params: { username: this.username } }">좋아요한 영화</router-link></button>
+        </div>
       </div>
-      <div>
-        <router-link :to="{ name: 'likeArticleList', params: { username: this.username } }">좋아요 한 글</router-link>
-      </div>
-      <div>
-        <router-link :to="{ name: 'likeMovieList', params: { username: this.username } }">좋아요 누른 영화</router-link>
       </div>
     </div>
   </div>
@@ -49,4 +50,8 @@ export default {
 
 <style>
 
+
+.btn:hover a{
+  color: black;
+}
 </style>

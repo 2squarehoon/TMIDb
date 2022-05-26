@@ -160,4 +160,21 @@ nav a {
 .button-3:hover a{
   color: black;
 }
+
+.routertext {
+  color: whitesmoke;
+  text-decoration:none;
+}
+
+ul.mylist {
+  list-style:none
+}
+
+ul.mylist li {
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid whitesmoke;
+    font-size: 20px;
+}
 </style>
+
