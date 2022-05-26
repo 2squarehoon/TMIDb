@@ -6,7 +6,7 @@
         <!-- 이미지 나중에 만들어서 적용 -->
       </router-link>&nbsp;&nbsp;
       <router-link style="color:whitesmoke" :to="{ name: 'recommend' }">추천영화</router-link>&nbsp;&nbsp;
-      <router-link style="color:whitesmoke" :to="{ name: 'movie', params: { moviePk: this.randomPk} }">무작위영화</router-link>&nbsp;&nbsp;
+      <div @click="randomMovie" style="color:whitesmoke; cursor:pointer;font-weight:bold">무작위영화</div>&nbsp;&nbsp;
       <router-link style="color:whitesmoke" :to="{ name: 'articles' }">커뮤니티</router-link>
       <form class="d-flex ms-auto">
         <input 
@@ -60,7 +60,6 @@ export default {
           name: "searchMovie",
           params: {
             keyword: this.keyword,
-            isResultShow: true,
           },
         })
         this.keyword = ''
@@ -69,11 +68,19 @@ export default {
       } else {
         alert('않이 검색어 입력 웨않함?')
       }
-    }
+    },
+    randomMovie() {
+      this.randomPk = _.sample(_.range(1, 915))
+      this.$router.push({
+        name: "movie",
+        params: {
+          moviePk: this.randomPk
+        },
+      })
+      this.randomPk = ''
+      location.reload()
+    } 
   },
-  created () {
-    this.randomPk = _.sample(_.range(1, 915))
-  }
 }
 
 </script>
