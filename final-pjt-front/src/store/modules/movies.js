@@ -49,7 +49,7 @@ export default {
       movie
         .all()
         .then((res) => {
-          const random_movie = _.sampleSize(res.data, 6)
+          const random_movie = _.sampleSize(res.data, 12)
           commit("SET_MOVIES", random_movie);
         })
         .catch((err) => console.error(err.response))
