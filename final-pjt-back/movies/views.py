@@ -75,8 +75,13 @@ def like_movie(request, movie_pk):
 @api_view(['GET'])
 def search(request, keyword):
     movies = Movie.objects.all()
+    def insert_whitespace(keyword):
+        s = []
+        for i in range(len(keyword)):
+            s.append(keyword[i:i+1])
+        return '\s*'.join(s)
     if keyword:
-        movies = movies.filter(korean_title__icontains=keyword)
+        movies = movies.filter(korean_title__iregex=insert_whitespace(keyword))
     serializer = MovieSerializer(movies, many=True)
     return Response(serializer.data)
 
