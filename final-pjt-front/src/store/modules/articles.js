@@ -6,6 +6,8 @@ export default {
   state: {
     articles: [],
     article: { title: "", content: "" },
+    currentUser: {},
+    isliked: false,
   },
 
   getters: {
@@ -14,6 +16,15 @@ export default {
     isAuthor: (state, getters) => {
       return state.article.user?.username === getters.currentUser?.username
     },
+    isliked(state) {
+      state.isliked = false
+      state.article.like_users?.forEach(user => {
+        if (user.username === state.currentUser.username) {
+          state.isliked = true
+        }
+      })
+      return state.isliked
+    }
   },
 
   mutations: {
@@ -21,6 +32,7 @@ export default {
     SET_ARTICLE: (state, article) => (state.article = article),
     SET_ARTICLE_COMMENTS: (state, comments) =>
       (state.article.comments = comments),
+    SET_CURRENT_USER: (state, user) => (state.currentUser = user),
   },
 
   actions: {
