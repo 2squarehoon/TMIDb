@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <h1>Movie Search</h1>
+    <h1>검색된 영화목록</h1>
     <div class="row">
       <div v-for="movie in movies" :key="movie.pk" class="movie-card col-3 mb-4">
         <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }" >
