@@ -7,6 +7,9 @@
         </router-link>
       </li>
     </ul>
+    <div class="d-flex justify-content-end mx-4">
+      <router-link :to="{ name: 'profile' }"><img src="@/assets/back2.png" alt="back" height="40"></router-link>
+    </div>
   </div>
 </template>
 
