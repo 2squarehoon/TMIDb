@@ -27,6 +27,9 @@
     
     <!-- Comment UI -->
     <comment-list :comments="article.comments"></comment-list>
+    <div class="d-flex justify-content-end mx-4">
+      <router-link :to="{ name: 'articles' }"><img src="@/assets/back2.png" alt="back" height="40"></router-link>
+    </div>
   </div>
 </template>
 

@@ -1,27 +1,33 @@
 <template>
-  <form @submit.prevent="onSubmit">
-    <div class="d-flex justify-content-center">
-      <div>
-        <h1>{{ newProfile.username }}님의 프로필 변경</h1>
-        <br>
-        <p>1. 관객의 평점과 비평가의 평점 중 어느 것이 더 중요하다고 생각하시나요?</p>
-        <p class="text-secondary">(관객의 평점이 중요하다면 1에 가깝게, 비평가의 평점이 중요하다면 9에 가깝게 설정해주세요)</p>
-        <div class="customizing-range">
-          <input type="range" min="1" max="9" value="5" id="user_or_critic" class="slider" oninput="document.getElementById('user_or_critic_value').innerHTML=this.value;" v-model="newProfile.user_or_critic" required>&nbsp;
-          <span id="user_or_critic_value" class="value"></span>
+  <div>
+
+    <form @submit.prevent="onSubmit">
+      <div class="d-flex justify-content-center">
+        <div>
+          <h1>{{ newProfile.username }}님의 프로필 변경</h1>
+          <br>
+          <p>1. 관객의 평점과 비평가의 평점 중 어느 것이 더 중요하다고 생각하시나요?</p>
+          <p class="text-secondary">(관객의 평점이 중요하다면 1에 가깝게, 비평가의 평점이 중요하다면 9에 가깝게 설정해주세요)</p>
+          <div class="customizing-range">
+            <input type="range" min="1" max="9" value="5" id="user_or_critic" class="slider" oninput="document.getElementById('user_or_critic_value').innerHTML=this.value;" v-model="newProfile.user_or_critic" required>&nbsp;
+            <span id="user_or_critic_value" class="value"></span>
+          </div>
+          <br>
+          <p>2. 전세계인의 평점과 한국인의 평점 중 어느 것이 더 중요하다고 생각하시나요?</p>
+            <p class="text-secondary">(전세계의 평점이 중요하다면 1에 가깝게, 한국인의 평점이 중요하다면 9에 가깝게 설정해주세요)</p>
+          <div class="customizing-range">
+            <input type="range" min="1" max="9" value="5" id="foreign_or_domestic" class="slider" oninput="document.getElementById('foreign_or_domestic_value').innerHTML=this.value;" v-model="newProfile.foreign_or_domestic" required>&nbsp;
+            <span id="foreign_or_domestic_value" class="value"></span>
+          </div>
+          <br>
+          <button>변경하기</button>
+          </div>
         </div>
-        <br>
-        <p>2. 전세계인의 평점과 한국인의 평점 중 어느 것이 더 중요하다고 생각하시나요?</p>
-          <p class="text-secondary">(전세계의 평점이 중요하다면 1에 가깝게, 한국인의 평점이 중요하다면 9에 가깝게 설정해주세요)</p>
-        <div class="customizing-range">
-          <input type="range" min="1" max="9" value="5" id="foreign_or_domestic" class="slider" oninput="document.getElementById('foreign_or_domestic_value').innerHTML=this.value;" v-model="newProfile.foreign_or_domestic" required>&nbsp;
-          <span id="foreign_or_domestic_value" class="value"></span>
-        </div>
-        <br>
-        <button>변경하기</button>
-        </div>
-      </div>
-  </form>
+    </form>
+    <div class="d-flex justify-content-end mx-4">
+      <router-link :to="{ name: 'profile' }"><img src="@/assets/back2.png" alt="back" height="40"></router-link>
+    </div>
+  </div>
 </template>
 
 <script>
