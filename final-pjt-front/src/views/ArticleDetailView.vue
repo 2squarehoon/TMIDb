@@ -20,7 +20,9 @@
     </div>
     <hr>
     <div style="color:gray;">
-      <button @click="likeArticle({ articlePk: article.pk })">추천</button>
+      <button v-if="is_liked" @click="likeArticle({ articlePk: article.pk })">추천</button>
+      <button v-else @click="likeArticle({ articlePk: article.pk })">추천 취소</button>
+
       {{ like_count }}명이 이 글을 추천합니다.
     </div>
     
@@ -40,7 +42,8 @@ export default {
   components: { CommentList },
   data() {
     return {
-      articlePk: ''
+      articlePk: '',
+      is_liked: '',
     }
   },
   computed: {
@@ -51,7 +54,11 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['fetchArticle', 'likeArticle', 'deleteArticle'])
+    ...mapActions(['fetchArticle', 'deleteArticle']),
+    likeArticle() {
+      this.is_liked = !this.is_liked
+      this.$store.dispatch('likeArticle', {articlePk: this.articlePk})
+    }
   },
   created() {
     this.articlePk = this.$route.params.articlePk
