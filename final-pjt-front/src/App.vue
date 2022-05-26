@@ -28,6 +28,7 @@ h1 {
   padding-top: 10px;
   padding-top: 5px;
   color: whitesmoke;
+  font-size: 3rem !important;
 }
 
 h2, h3, h5, p, th {
@@ -175,6 +176,15 @@ ul.mylist li {
     margin-bottom: 5px;
     border-bottom: 1px solid whitesmoke;
     font-size: 20px;
+}
+
+@font-face {
+  font-family: 'SDMiSaeng';
+  src: url(assets/SDMiSaeng.ttf) format('truetype');
+}
+
+h1, h2, h3, h5, p, th {
+  font-family: SDMiSaeng;
 }
 </style>
 
