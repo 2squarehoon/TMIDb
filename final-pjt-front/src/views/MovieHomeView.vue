@@ -10,37 +10,72 @@
         <div class="inner-content">
           <span class="title">{{ movie.korean_title }}</span>
           <hr>
-          <span class="rating">Naver : 
+          <span class="rating">Naver
             <div class="star-ratings">
               <div 
-                class="star-ratings-fill space-x-2 text-lg"
-                :style="{ width: naver_score + '%' }"
+                class="star-ratings-fill text-lg"
+                :style="{ width: movie.naver_rating * 10 + '%' }"
               >
                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
               </div>
-              <div class="star-ratings-base space-x-2 text-lg">
+              <div class="star-ratings-base text-lg">
                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
               </div>
             </div>
-            {{ movie.naver_rating }}/10.0
           </span>
-          <span class="rating">Watcha : 
+          <span class="rating">Watcha
             <div class="star-ratings">
               <div 
-                class="star-ratings-fill space-x-2 text-lg"
-                :style="{ width: watcha_score + '%' }"
+                class="star-ratings-fill text-lg"
+                :style="{ width: movie.watcha_rating * 20 + '%' }"
               >
                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
               </div>
-              <div class="star-ratings-base space-x-2 text-lg">
+              <div class="star-ratings-base text-lg">
                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
               </div>
             </div>
-            {{ movie.watcha_rating }}/5.0
           </span>
-          <span class="rating">IMDb : {{ movie.imdb_rating }}/10.0</span>
-          <span class="rating">Metacritic : {{ movie.mc_rating }}/100</span> 
-          <span class="rating">Rotten Tomatoes : {{ movie.rt_rating }}/100</span>
+          <span class="rating">IMDb 
+            <div class="star-ratings">
+              <div 
+                class="star-ratings-fill text-lg"
+                :style="{ width: movie.imdb_rating * 10 + '%' }"
+              >
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <div class="star-ratings-base text-lg">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+            </div>
+          </span>
+          <span class="rating">Metacritic 
+            <div class="star-ratings">
+              <div 
+                class="star-ratings-fill text-lg"
+                :style="{ width: movie.mc_rating + '%' }"
+              >
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <div class="star-ratings-base text-lg">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+            </div>
+          </span> 
+          <span class="rating">Rotten Tomatoes
+            <div class="star-ratings">
+              <div 
+                class="star-ratings-fill text-lg"
+                :style="{ width: movie.rt_rating + '%' }"
+              >
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <div class="star-ratings-base text-lg">
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+            </div>
+          </span>
+          <hr>
         </div>
       </div>
     </div>
@@ -60,11 +95,6 @@ import { mapGetters, mapActions } from 'vuex'
     },
     created() {
       this.fetchMovies()
-      this.naver_score = this.movie.naver_rating * 10
-      this.watcha_score = this.movie.watcha_rating * 20
-      this.imdb_score = this.movie.imdb_rating * 10
-      this.mc_score = this.movie.mc_rating * 20
-      this.rt_score = this.movie.rt_rationg * 20
     },
   }
 </script>
@@ -90,7 +120,6 @@ import { mapGetters, mapActions } from 'vuex'
 }
  
 .star-ratings-base {
-  color: black;
   z-index: 0;
   padding: 0;
 }
