@@ -6,6 +6,7 @@
         <!-- 이미지 나중에 만들어서 적용 -->
       </router-link>&nbsp;&nbsp;
       <router-link style="color:whitesmoke" :to="{ name: 'recommend' }">추천영화</router-link>&nbsp;&nbsp;
+      <router-link style="color:whitesmoke" :to="{ name: 'movie', params: { moviePk: this.randomPk} }">무작위영화</router-link>&nbsp;&nbsp;
       <router-link style="color:whitesmoke" :to="{ name: 'articles' }">커뮤니티</router-link>
       <form class="d-flex ms-auto">
         <input 
@@ -35,12 +36,14 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import _ from 'lodash'
 
 export default {
   name: 'NavBar',
   data() {
     return {
-      keyword: ''
+      keyword: '',
+      randomPk: ''
     }
   },
   computed: {
@@ -67,6 +70,9 @@ export default {
         alert('않이 검색어 입력 웨않함?')
       }
     }
+  },
+  created () {
+    this.randomPk = _.sample(_.range(1, 915))
   }
 }
 

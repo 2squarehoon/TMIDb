@@ -11,41 +11,18 @@
       <div>
         <router-link :to="{ name: 'writeArticleList', params: { username: this.username } }">작성한 글</router-link>
       </div>
-      <!-- <ul>
-        <li v-for="article in profile.articles" :key="article.pk">
-          <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
-            {{ article.title }}
-          </router-link>
-        </li>
-      </ul> -->
       <div>
         <router-link :to="{ name: 'likeArticleList', params: { username: this.username } }">좋아요 한 글</router-link>
       </div>
-      <!-- <ul>
-        <li v-for="article in profile.like_articles" :key="article.pk">
-          <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
-            {{ article.title }}
-          </router-link>
-        </li>
-      </ul> -->
       <div>
         <router-link :to="{ name: 'likeMovieList', params: { username: this.username } }">좋아요 누른 영화</router-link>
       </div>
-      <!-- <ul>
-        <li v-for="movie in profile.like_movies" :key="movie.pk">
-          <router-link :to="{ name: 'movie', params: { moviePk: movie.pk } }">
-            {{ movie.korean_title }}
-          </router-link>
-        </li>
-      </ul> -->
-      <button><router-link :to="{ name: 'movie', params: { moviePk: this.randomPk} }">random movie</router-link></button>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import _ from 'lodash'
 
 export default {
   name: 'ProfileView',
@@ -66,7 +43,6 @@ export default {
     // this.fetchProfile(payload)
     this.username = this.$route.params.username
     this.fetchProfile({ username: this.username})
-    this.randomPk = _.sample(_.range(1, 915))
   },
 }
 </script>
