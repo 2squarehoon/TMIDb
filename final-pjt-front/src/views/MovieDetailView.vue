@@ -56,13 +56,33 @@ export default {
   methods: {
     ...mapActions(['fetchMovie']),
     likeMovie() {
-      this.is_liked = !this.is_liked
+      // if (!this.is_liked) {
+        this.is_liked = !this.is_liked
+      // }
+      console.log(this.is_liked)
       this.$store.dispatch('likeMovie', {moviePk: this.moviePk})
+    },
+    check() {
+      this.movie.like_users?.forEach(user => {
+        if (user.username === this.currentUser.username) {
+          this.is_liked = !this.is_liked
+        }
+      })
+      return this.is_liked
     }
   },
   created() {
     this.moviePk = this.$route.params.moviePk
     this.fetchMovie({ moviePk: this.moviePk})
+    console.log(this.movie.korean_title)
+    // this.check()
+  },
+  mounted() {
+    console.log(this.movie.korean_title)
+  },
+  updated() {
+    // console.log(this.movie.korean_title)
+    // this.check()
   }
 
 }
