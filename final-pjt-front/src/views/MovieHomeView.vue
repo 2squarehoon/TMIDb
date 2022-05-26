@@ -86,6 +86,11 @@ import { mapGetters, mapActions } from 'vuex'
 
   export default {
     name: 'MovieHome',
+    // data() {
+    //   return{
+    //     page:1
+    //   }
+    // },
     computed: {
       ...mapGetters(['movies'])
     },

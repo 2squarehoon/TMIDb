@@ -10,6 +10,12 @@ export default {
       url: `${END_POINT}/`,
     })
   },
+  // all(page) { // page로 무한스크롤 불러오기 위함
+  //   return api({
+  //     method: "get",
+  //     url: `${END_POINT}/${page}`,
+  //   })
+  // }, 
   detail(id) {
     return api({
       method: "get",
