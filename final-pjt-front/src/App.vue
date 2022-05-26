@@ -32,8 +32,23 @@ h1 {
   text-align: center;
   padding-top: 10px;
   padding-top: 5px;
+  color: whitesmoke;
+}
+h2 {
+  color: whitesmoke;
 }
 
+p {
+  color: whitesmoke;
+}
+
+th {
+  color: whitesmoke;
+}
+
+label {
+  color: whitesmoke;
+}
 .main {
   text-align: center;
   font-size: 25px;
@@ -48,11 +63,6 @@ nav a {
   color: #2c3e50;
   text-decoration: none;
 }
-
-/* nav a.router-link-exact-active {
-  color: #42b983;
-} */
-
 
 .movie-card {
   border: 1px solid black;
@@ -78,7 +88,7 @@ nav a {
 }
 
 .movie-card:hover img {
-  opacity: 0.1;
+  opacity: 0.2;
   /* transform: scale(1.25); */
 }
 
@@ -90,7 +100,7 @@ nav a {
   top: 80%;
   left: 50%;
   transition: all 600ms ease;
-  color: black;
+  color: whitesmoke;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -117,10 +127,10 @@ nav a {
 }
 
 .background{
-  height: 100vh;
   overflow: hidden;
+  min-height:100vh;
   margin:0;
-  background-color: lightgrey;
+  background-color: #333333;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
