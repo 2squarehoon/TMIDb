@@ -5,7 +5,7 @@
 
     </div>
     <div class="d-flex justify-content-end">
-      <button class="btn btn-primary">댓글 달기</button>
+      <button>댓글 작성</button>
     </div>
   </form>
 </template>

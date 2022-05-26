@@ -2,9 +2,11 @@
   <div>
     <div class="container px-1 min-vh-100">
       <div class="d-flex justify-content-center">
-      <p>자유게시판</p>
     </div>
-      <router-link :to="{ name: 'articleNew' }" v-if="isLoggedIn" class="btn btn-sm btn-info float-right mb-2 mr-3">글 작성하기</router-link>
+      <div class="button-3">
+        <div class="eff-3"></div>
+        <router-link :to="{ name: 'articleNew' }" v-if="isLoggedIn">글 작성하기</router-link>
+      </div>
       <table class="table row m-0">
         <thead class="col-12 thead-dark">
           <tr class="row w-100 m-0">
@@ -35,14 +37,6 @@
           </tr>
         </tbody>
       </table>
-      <!-- <div class="d-flex justify-content-center my-5">
-        <ul class="pagination">
-          <li class="page-item">
-          </li>
-          <li class="page-item">
-          </li>
-        </ul>
-      </div> -->
     </div>
 
   </div>
