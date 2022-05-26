@@ -16,10 +16,10 @@
         <hr>
         <p>{{ movie.overview }}</p>
         <div style="color:gray;">
-          <div v-if="is_liked">
+          <div v-if="boo">
             <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-solid fa-heart" /></button>{{ like_count }}명이 이 영화를 좋아합니다
           </div>
-          <div v-if="!is_liked">
+          <div v-else>
             <button @click="likeMovie({ moviePk: movie.pk })"><font-awesome-icon icon="fa-regular fa-heart" /></button>{{ like_count }}명이 이 영화를 좋아합니다
           </div>
           <!-- <div v-for="user in movie.like_users" :key="user.pk">
@@ -55,14 +55,42 @@ export default {
     return {
       moviePk: '',
       // is_liked: false,
+      boo: ''
     }
   },
   computed: {
-    ...mapGetters(['movie', 'currentUser', 'is_liked']),
+    ...mapGetters(['movie', 'currentUser']),
     like_count() {
       // return article.like_users ? this.article.like_users.length : undefined
       return this.movie.like_users?.length
     },
+    check() {
+      this.movie.like_users?.forEach(user => {
+        console.log(user.username)
+        if (user.username === this.currentUser.username) {
+          return true
+        }
+      })
+      return false
+    }
+  },
+  watch: {
+    movie:{
+      handler() {
+        this.movie.like_users?.forEach(user => {
+        console.log(111,user)
+        console.log(user.username)
+        this.boo = false 
+        console.log(this)
+        if (user.username === this.currentUser.username) {
+          this.boo = true
+          console.log('같음')
+          return true
+        }
+      })
+      },
+      deep: true
+    }
   },
   methods: {
     ...mapActions(['fetchMovie']),
@@ -72,22 +100,13 @@ export default {
       // }
       // console.log(this.is_liked)
       this.$store.dispatch('likeMovie', {moviePk: this.moviePk})
-      location.reload()
+      // location.reload()
     },
-    // check() {
-    //   this.movie.like_users?.forEach(user => {
-    //     if (user.username === this.currentUser.username) {
-    //       this.is_liked = !this.is_liked
-    //     }
-    //   })
-    //   return this.is_liked
-    // }
   },
   created() {
     this.moviePk = this.$route.params.moviePk
     this.fetchMovie({ moviePk: this.moviePk})
-    // console.log(this.movie.korean_title)
-    // this.check()
+    console.log(this.movie.korean_title)
   },
   // mounted() {
   //   console.log(this.movie.korean_title)
