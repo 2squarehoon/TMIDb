@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div v-for="movie in movies" :key="movie.pk" class="movie-card col-3 mb-4">
+      <div v-for="movie in movies" :key="movie.pk" class="movie-card border-0 col-3 mb-4">
         <router-link :to="{ name: 'movie', params: { moviePk: movie.pk} }" >
           <img :src="movie.poster_url" :alt="movie.korean_title" class="movie-card-img col-12 justify-content-center">
         </router-link>
