@@ -15,7 +15,9 @@
     <hr>
     <div class="d-flex justify-content-between">
       <div style="color:whitesmoke;">
-        추천 <button @click="likeArticle({ articlePk: article.pk })">{{ like_count }}</button>
+        <button @click="likeArticle({ articlePk: article.pk })">{{ like_count }}</button>
+        <span v-if="!is_liked">추천</span>
+        <span v-else>추천 취소</span>
       </div>
       
       <div v-if="isAuthor">
@@ -42,7 +44,8 @@ export default {
   components: { CommentList },
   data() {
     return {
-      articlePk: ''
+      articlePk: '',
+      is_liked: false,
     }
   },
   computed: {
@@ -53,7 +56,11 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['fetchArticle', 'likeArticle', 'deleteArticle'])
+    ...mapActions(['fetchArticle', 'deleteArticle']),
+    likeArticle() {
+      this.is_liked = !this.is_liked
+      this.$store.dispatch('likeArticle', {articlePk: this.articlePk})
+    }
   },
   created() {
     this.articlePk = this.$route.params.articlePk
