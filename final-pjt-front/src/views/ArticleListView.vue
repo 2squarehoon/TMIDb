@@ -6,7 +6,7 @@
       <div class="d-flex justify-content-end">
         <div class="button-3">
           <div class="eff-3"></div>
-          <router-link :to="{ name: 'articleNew' }" v-if="isLoggedIn">글 작성하기</router-link>
+          <router-link :to="{ name: 'articleNew' }" v-if="isLoggedIn">게시물 작성</router-link>
         </div>
       </div>
       <br>
