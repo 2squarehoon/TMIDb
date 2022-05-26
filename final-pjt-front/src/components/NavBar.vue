@@ -2,9 +2,11 @@
   <nav class="navbar navbar-light nav-bg">
     <div class="container-fluid">
       <router-link :to="{ name: 'home' }">
-        <img src="@/assets/logo.png" alt="#" height="40">
+        <img src="@/assets/logo.png" alt="logo" height="40">
         <!-- 이미지 나중에 만들어서 적용 -->
-      </router-link>
+      </router-link>&nbsp;&nbsp;
+      <router-link style="color:whitesmoke" :to="{ name: 'recommend' }">추천영화</router-link>&nbsp;&nbsp;
+      <router-link style="color:whitesmoke" :to="{ name: 'articles' }">커뮤니티</router-link>
       <form class="d-flex ms-auto">
         <input 
           type="text"
