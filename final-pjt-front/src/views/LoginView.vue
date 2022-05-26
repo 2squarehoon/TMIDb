@@ -5,6 +5,7 @@
     <form @submit.prevent="login(credentials)">
       <div class="d-flex justify-content-center">
         <div>
+          <h1>로그인</h1>
           <div>
             <label for="username">사용자 이름</label>
           </div>
@@ -19,7 +20,7 @@
           </div>
           <br>
           <div>
-            <button>Login</button>
+            <button>로그인</button>
           </div>
         </div>
       </div>
