@@ -6,7 +6,7 @@
         <!-- 이미지 나중에 만들어서 적용 -->
       </router-link>&nbsp;&nbsp;
       <router-link style="color:whitesmoke" :to="{ name: 'recommend' }">추천영화</router-link>&nbsp;&nbsp;
-      <div @click="randomMovie" style="color:whitesmoke; cursor:pointer;font-weight:bold">무작위영화</div>&nbsp;&nbsp;
+      <div @click="randomMovie" class="randomdiv">무작위영화</div>&nbsp;&nbsp;
       <router-link style="color:whitesmoke" :to="{ name: 'articles' }">커뮤니티</router-link>
       <form class="d-flex ms-auto">
         <input 
@@ -14,19 +14,19 @@
           placeholder="영화제목을 검색하세요"
           v-model="keyword"
           @keyup.enter="searchMovies(keyword)"
-          class="form-control me-2"
+          class="search form-control me-2"
         >
-        <button type="submit" @click="searchMovies(keyword)" class="btn btn-outline-light">search</button>
+        <button type="submit" @click="searchMovies(keyword)" class="btn btn-outline-light searchbtn">search</button>
       </form>
       <div class="navbar-nav ms-auto d-flex">
         <div v-if="!isLoggedIn">
           <router-link class="nav-item text-light" :to="{ name: 'login' }">로그인</router-link>
-          <span> | </span>
+          <span>&nbsp;&nbsp;</span>
           <router-link :to="{ name: 'signup' }" class="nav-item text-light">회원가입</router-link>
         </div>
         <div v-if="isLoggedIn">
-          <router-link :to="{ name: 'profile', params: { username } }" class="nav-item text-light">{{ currentUser.username }}님의 프로필</router-link>
-          <span> | </span>
+          <router-link :to="{ name: 'profile', params: { username } }" class="nav-item text-light">{{ currentUser.username }}(profile)</router-link>
+          <span>&nbsp;&nbsp;</span>
           <router-link :to="{ name: 'logout' }" class="nav-item text-light">로그아웃</router-link>
         </div>
       </div>
@@ -92,5 +92,26 @@ export default {
 
 .nav-bg {
   background-color: #666E82;
+}
+
+.randomdiv {
+  color: whitesmoke;
+  cursor:pointer;
+  font-weight:bold;
+  font-family: SDMiSaeng;
+  font-size: 1.73rem !important;
+}
+
+.searchbtn {
+  color: whitesmoke;
+  font-family: SDMiSaeng;
+  font-weight:bold;
+  font-size: 1.1rem !important;
+}
+
+.search {
+  color: whitesmoke;
+  font-family: SDMiSaeng;
+  font-size: 1.1rem !important;
 }
 </style>

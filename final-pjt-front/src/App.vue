@@ -28,11 +28,36 @@ h1 {
   padding-top: 10px;
   padding-top: 5px;
   color: whitesmoke;
-  font-size: 3rem !important;
+  font-family: SDMiSaeng;
+  font-size: 4.02rem !important;
 }
 
-h2, h3, h5, p, th {
+h2 {
   color: whitesmoke;
+  font-family: SDMiSaeng;
+  font-size: 3.32rem !important;
+}
+
+h3 {
+  color: whitesmoke;
+  font-family: SDMiSaeng;
+  font-size: 2.93rem !important;
+}
+
+h5 {
+  color: whitesmoke;
+  font-family: SDMiSaeng;
+  font-size: 2.16rem !important;
+}
+
+p, th, a, label {
+  color: whitesmoke;
+  font-family: SDMiSaeng;
+  font-size: 1.73rem !important;
+}
+
+hr {
+  border: solid 1px whitesmoke !important; 
 }
 
 label {
@@ -101,12 +126,14 @@ nav a {
 }
 
 .movie-card .inner-content .title {
-  font-size: 1.5rem;
+  font-family: SDMiSaeng;
+  font-size: 2rem !important;
   font-weight: 700;
 }
 
 .movie-card .inner-content .rating {
-  font-size: 1.2rem;
+  font-family: SDMiSaeng;
+  font-size: 1.5rem !important;
   font-weight: 700;
 }
 
@@ -137,8 +164,8 @@ nav a {
   ;
 }
 .button-3 a{
-  font-family:arial;
-  font-size:16px;
+  font-family: SDMiSaeng;
+  font-size: 1.73rem !important;
   color: whitesmoke;
   text-decoration:none;
   line-height:40px;
@@ -178,13 +205,26 @@ ul.mylist li {
     font-size: 20px;
 }
 
+.content {
+  color: whitesmoke;
+  font-family: SDMiSaeng;
+  font-size: 1.5rem !important;
+}
+
+.contentedit {
+  font-family: SDMiSaeng;
+  font-size: 1.5rem !important;
+}
+
+.like-msg {
+  color: gray;
+  font-family: SDMiSaeng;
+  font-size: 1.5rem !important;
+}
+
 @font-face {
   font-family: 'SDMiSaeng';
   src: url(assets/SDMiSaeng.ttf) format('truetype');
-}
-
-h1, h2, h3, h5, p, th {
-  font-family: SDMiSaeng;
 }
 </style>
 
